@@ -11,10 +11,9 @@ BeforeAll(async function () {
 });
 
 Before(async function () {
-    context = await browser.newContext();
+    context = await browser.newContext({viewport: null});
     const page = await context.newPage();
     pageFixture.page = page;
-    pageFixture.page.setViewportSize({width: 1050, height: 1500})
 });
 
 After(async function ({pickle, result}) {

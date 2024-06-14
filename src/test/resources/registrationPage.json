@@ -4,6 +4,10 @@
         {
             "elementName": "createAnAccountBtn",
             "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Create an Account')]"
+        },
+        {
+            "elementName": "createAccHeading",
+            "selectorValue": "//div[contains(@class,'page-title-wrapper')]//h1"
         }
     ]
 }
