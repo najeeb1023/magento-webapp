@@ -8,6 +8,34 @@
         {
             "elementName": "createAccHeading",
             "selectorValue": "//div[contains(@class,'page-title-wrapper')]//h1"
+        },
+        {
+            "elementName": "firstName",
+            "selectorValue": "//input[contains(@id,'firstname')]"
+        },
+        {
+            "elementName": "lastName",
+            "selectorValue": "//input[contains(@id,'lastname')]"
+        },
+        {
+            "elementName": "emailAddress",
+            "selectorValue": "//input[contains(@id,'email')]"
+        },
+        {
+            "elementName": "password",
+            "selectorValue": "//input[contains(@id,'password')]"
+        },
+        {
+            "elementName": "confirmPass",
+            "selectorValue": "//input[contains(@id,'password-confirmation')]"
+        },
+        {
+            "elementName": "createAccountConfirmBtn",
+            "selectorValue": "//div[contains(@class,'primary')]//button[contains(@type,'submit')]"
+        },
+        {
+            "elementName": "pageMessage",
+            "selectorValue": "//div[contains(@class,'pagasde messages')]"
         }
     ]
 }

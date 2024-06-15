@@ -25,5 +25,5 @@ After(async function ({pickle, result}) {
 });
 
 AfterAll(async function () {
-    await browser.close();
+    await pageFixture.page.waitForTimeout(3000);
 });
