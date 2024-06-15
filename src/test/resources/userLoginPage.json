@@ -1,0 +1,25 @@
+{
+    "name": "Login User Locators",
+    "webElements": [
+        {
+            "elementName": "signInPageBtn",
+            "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Sign In')]"
+        },
+        {
+            "elementName": "emailAddress",
+            "selectorValue": "//input[contains(@id,'email')]"
+        },
+        {
+            "elementName": "password",
+            "selectorValue": "//input[contains(@id,'pass')]"
+        },
+        {
+            "elementName": "createAccountConfirmBtn",
+            "selectorValue": "//div[contains(@class,'primary')]//button[contains(@type,'submit')]"
+        },
+        {
+            "elementName": "welcomeMessage",
+            "selectorValue": "//span[contains(@class,'logged-in')]"
+        }
+    ]
+}
