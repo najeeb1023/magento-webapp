@@ -27,7 +27,7 @@ export class LoginUser {
     };
 
     public async userEntersCorrectCredentials():Promise<void>{
-        await this.userLoginLocators.emailAddress().first().fill('testemail@test.com');
+        await this.userLoginLocators.emailAddress().first().fill('new22username220@test.com');
         await this.userLoginLocators.password().first().fill('Te345435345345!@#!@#st');
         await this.userLoginLocators.signInUserBtn().first().click();
     };

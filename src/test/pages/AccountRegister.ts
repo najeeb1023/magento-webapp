@@ -38,9 +38,9 @@ export class AccountRegister {
     };
 
     public async enterUserDetails ():Promise<void> {
-        await this.registrationPageLocators.firstName().fill('Test 2');
-        await this.registrationPageLocators.lastName().fill('Test 3');
-        await this.registrationPageLocators.emailAddress().first().fill('tslldasddas@test.com')
+        await this.registrationPageLocators.firstName().fill('John');
+        await this.registrationPageLocators.lastName().fill('Test');
+        await this.registrationPageLocators.emailAddress().first().fill('new22username220@test.com')
         await this.registrationPageLocators.password().first().fill('Te345435345345!@#!@#st');
         await this.registrationPageLocators.confirmPass().fill('Te345435345345!@#!@#st');
         await pageFixture.page.keyboard.press('PageDown');
