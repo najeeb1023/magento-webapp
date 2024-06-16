@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lunaapp": "cucumber-js --config=config/cucumber.js --tags @MenSection"
+    "lunaapp": "cucumber-js --config=config/cucumber.js"
   },
   "keywords": [],
   "author": "",

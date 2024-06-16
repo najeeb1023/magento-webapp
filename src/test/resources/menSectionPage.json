@@ -4,15 +4,23 @@
 
         {
             "elementName": "menSectionBtn",
-            "selectorValue": "//span[contains(.,'Men')]"
+            "selectorValue": "//span[contains(.,'FLAG')]"
+        },
+        {
+            "elementName": "attireSectionOptions",
+            "selectorValue": "//div[contains(@class,'categories-menu')]//li"
         },
         {
             "elementName": "attireSectionBtn",
-            "selectorValue": "//div[contains(@class,'widget block block-static-block')]//ul//li[contains(.,'Jackets')]"
+            "selectorValue": "//div[contains(@class,'categories-menu')]//li//a[contains(.,'FLAG')]"
         },
         {
             "elementName": "itemsShown",
-            "selectorValue": "//div[contains(@class,'products wrapper grid products-grid')]//li[contains(@class,'item product product-item')]"
+            "selectorValue": "//li[contains(@class,'item product product-item')][FLAG]//div[contains(@class,'product details product-item-details')]//strong"
+        },
+        {
+            "elementName": "productsShown",
+            "selectorValue": "//li[contains(@class,'item product product-item')]"
         }
 
         ]
