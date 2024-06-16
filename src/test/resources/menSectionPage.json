@@ -1,0 +1,19 @@
+{
+    "name": "Men Section Page Locators",
+    "webElements": [
+
+        {
+            "elementName": "menSectionBtn",
+            "selectorValue": "//span[contains(.,'Men')]"
+        },
+        {
+            "elementName": "attireSectionBtn",
+            "selectorValue": "//div[contains(@class,'widget block block-static-block')]//ul//li[contains(.,'Jackets')]"
+        },
+        {
+            "elementName": "itemsShown",
+            "selectorValue": "//div[contains(@class,'products wrapper grid products-grid')]//li[contains(@class,'item product product-item')]"
+        }
+
+        ]
+}
