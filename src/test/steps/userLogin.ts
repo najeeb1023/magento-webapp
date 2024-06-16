@@ -9,8 +9,8 @@ Given("The user clicks on the Sign In button on the header.", async function () 
     await userLogin.goToSignIn();
 });
 
-When("The user enters correct credentials.", async function (){
-    await userLogin.userEntersCorrectCredentials();
+When("The user enters correct credentials.", async function (emailAddress:string, password: string){
+    await userLogin.userEntersCorrectCredentials(emailAddress, password);
 });
 
 Then("The user is logged in.", async function (){

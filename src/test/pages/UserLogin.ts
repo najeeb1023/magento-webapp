@@ -18,7 +18,7 @@ export class LoginUser {
         singInBtn:() => pageFixture.page.locator(getResource('signInPageBtn').selectorValue),
         emailAddress:() => pageFixture.page.locator(getResource('emailAddress').selectorValue),
         password:() => pageFixture.page.locator(getResource('password').selectorValue),
-        signInUserBtn:() => pageFixture.page.locator(getResource('createAccountConfirmBtn').selectorValue),
+        signInUserBtn:() => pageFixture.page.locator(getResource('signInBtn').selectorValue),
         welcomeMessage:() => pageFixture.page.locator(getResource('welcomeMessage').selectorValue).first()
     };
 
@@ -26,9 +26,9 @@ export class LoginUser {
         await this.userLoginLocators.singInBtn().click();
     };
 
-    public async userEntersCorrectCredentials():Promise<void>{
-        await this.userLoginLocators.emailAddress().first().fill('new22username220@test.com');
-        await this.userLoginLocators.password().first().fill('Te345435345345!@#!@#st');
+    public async userEntersCorrectCredentials(emailAddress: string, password: string):Promise<void>{
+        await this.userLoginLocators.emailAddress().first().fill(emailAddress);
+        await this.userLoginLocators.password().first().fill(password);
         await this.userLoginLocators.signInUserBtn().first().click();
     };
 

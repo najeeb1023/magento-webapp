@@ -37,24 +37,26 @@ export class AccountRegister {
         await expect(this.registrationPageLocators.createAccHeading()).toHaveText('Create New Customer Account');
     };
 
-    public async enterUserDetails ():Promise<void> {
-        await this.registrationPageLocators.firstName().fill('John');
-        await this.registrationPageLocators.lastName().fill('Test');
-        await this.registrationPageLocators.emailAddress().first().fill('new22username220@test.com')
-        await this.registrationPageLocators.password().first().fill('Te345435345345!@#!@#st');
-        await this.registrationPageLocators.confirmPass().fill('Te345435345345!@#!@#st');
+    public async enterUserDetails(firstname: string, lastname: string, email: string, password: string):Promise<void> {
+        await this.registrationPageLocators.firstName().fill(firstname);
+        await this.registrationPageLocators.lastName().fill(lastname);
+        await this.registrationPageLocators.emailAddress().first().fill(email)
+        await this.registrationPageLocators.password().first().fill(password);
+        await this.registrationPageLocators.confirmPass().fill(password);
+    };
+
+    public async createAccountOrSignIn (emailAddress: string, password: string):Promise<void> {
         await pageFixture.page.keyboard.press('PageDown');
         await this.registrationPageLocators.createAccConfirmBtn().first().click();
         await pageFixture.page.keyboard.press('PageUp');
         const pageAssert = await this.registrationPageLocators.pageMessage().innerText();
         if (pageAssert.includes('There is already an account with this email address.')) {
             await userLogin.goToSignIn();
-            await userLogin.userEntersCorrectCredentials();
+            await userLogin.userEntersCorrectCredentials(emailAddress, password);
             await userLogin.assertUserIsLoggedIn();
         } else {
-            console.log('Else is running')
             expect(this.registrationPageLocators.pageMessage()).toHaveText('Thank you for registering with Main Website Store.')
-        }
+        };
        
     };
 
