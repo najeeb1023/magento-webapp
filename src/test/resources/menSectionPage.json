@@ -1,0 +1,27 @@
+{
+    "name": "Men Section Page Locators",
+    "webElements": [
+
+        {
+            "elementName": "menSectionBtn",
+            "selectorValue": "//span[contains(.,'FLAG')]"
+        },
+        {
+            "elementName": "attireSectionOptions",
+            "selectorValue": "//div[contains(@class,'categories-menu')]//li"
+        },
+        {
+            "elementName": "attireSectionBtn",
+            "selectorValue": "//div[contains(@class,'categories-menu')]//li//a[contains(.,'FLAG')]"
+        },
+        {
+            "elementName": "itemsShown",
+            "selectorValue": "//li[contains(@class,'item product product-item')][FLAG]//div[contains(@class,'product details product-item-details')]//strong"
+        },
+        {
+            "elementName": "productsShown",
+            "selectorValue": "//li[contains(@class,'item product product-item')]"
+        }
+
+        ]
+}
