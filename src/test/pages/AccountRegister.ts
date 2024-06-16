@@ -2,10 +2,13 @@ import { Page, expect } from "@playwright/test";
 import { pageFixture } from "../hooks/pageFixture";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import * as registrationPageLocators from "../resources/registrationPage.json";
+import { LoginUser } from "./UserLogin";
 
     function getResource(resourceName: string) {
         return registrationPageLocators.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     };
+
+let userLogin = new LoginUser(pageFixture.page);
 
 export class AccountRegister {
 
@@ -34,19 +37,23 @@ export class AccountRegister {
         await expect(this.registrationPageLocators.createAccHeading()).toHaveText('Create New Customer Account');
     };
 
-    public async enterUserDetails ():Promise<any> {
-        await this.registrationPageLocators.firstName().fill('Test');
-        await this.registrationPageLocators.lastName().fill('Test 2');
-        await this.registrationPageLocators.emailAddress().first().fill('testemail@test.com')
+    public async enterUserDetails ():Promise<void> {
+        await this.registrationPageLocators.firstName().fill('Test 2');
+        await this.registrationPageLocators.lastName().fill('Test 3');
+        await this.registrationPageLocators.emailAddress().first().fill('tslldasddas@test.com')
         await this.registrationPageLocators.password().first().fill('Te345435345345!@#!@#st');
         await this.registrationPageLocators.confirmPass().fill('Te345435345345!@#!@#st');
         await pageFixture.page.keyboard.press('PageDown');
         await this.registrationPageLocators.createAccConfirmBtn().first().click();
-        const pageTextElement = this.registrationPageLocators.pageMessage();
-        if (await pageTextElement.isVisible()) {
-            console.log('True');
+        await pageFixture.page.keyboard.press('PageUp');
+        const pageAssert = await this.registrationPageLocators.pageMessage().innerText();
+        if (pageAssert.includes('There is already an account with this email address.')) {
+            await userLogin.goToSignIn();
+            await userLogin.userEntersCorrectCredentials();
+            await userLogin.assertUserIsLoggedIn();
         } else {
-            console.log('False');
+            console.log('Else is running')
+            expect(this.registrationPageLocators.pageMessage()).toHaveText('Thank you for registering with Main Website Store.')
         }
        
     };
