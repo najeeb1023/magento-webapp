@@ -17,8 +17,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Cucumber-Login-Tests
-      run: npm run test
+    - name: Cucumber-Tests
+      run: npm run lunaapp
     - uses: actions/upload-artifact@v4
       if: always()
       with:

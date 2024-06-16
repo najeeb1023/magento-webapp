@@ -9,4 +9,10 @@ Feature: Verify that the user is able to register an account.
 
     Scenario: User is able to register an account.
         When The user clicks on create account.
-        Then The user is redirected to the new customer account form.
+        And The user enters "<FirstName>", "<LastName>", "<Email>", "<Password>".
+        Then If the account is already registered then "<Email>" and "<Password>" is entered to sign in the user.
+
+        Examples:
+            | FirstName | LastName  | Email                | Password     |
+            | TestZulfi | ZulfiTest | zulfiTest@gmail.com  | testsss123!  |
+            | UmdeyTest | LastNaw21 | udimswugh@gmail.com  | karaw22a!@r  |

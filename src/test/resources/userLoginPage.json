@@ -14,7 +14,7 @@
             "selectorValue": "//input[contains(@id,'pass')]"
         },
         {
-            "elementName": "createAccountConfirmBtn",
+            "elementName": "signInBtn",
             "selectorValue": "//div[contains(@class,'primary')]//button[contains(@type,'submit')]"
         },
         {
