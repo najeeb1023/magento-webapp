@@ -4,4 +4,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 Dockerfile
-/.vscode/launch.json
+.vscode/
