@@ -1,6 +1,5 @@
 import { pageFixture } from "../hooks/pageFixture";
-import * as userLoginPage from "../../../src/test/resources/userLoginPage.json"
-import * as registrationPage from "../../../src/test/resources/registrationPage.json"
+import * as userLoginPage from "../../../src/test/resources/userLoginPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 

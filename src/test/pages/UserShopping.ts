@@ -1,5 +1,5 @@
 import { pageFixture } from "../hooks/pageFixture";
-import * as menSectionPage from "../resources/menSectionPage.json"
+import * as menSectionPage from "../resources/menSectionPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 
