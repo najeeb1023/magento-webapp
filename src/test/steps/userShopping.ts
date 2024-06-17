@@ -1,5 +1,5 @@
 import { When, Then, setDefaultTimeout } from "@cucumber/cucumber";
-import { MenSection } from "../pages/MenSection";
+import { MenSection } from "../pages/UserShopping";
 import { pageFixture } from "../hooks/pageFixture";
 
 setDefaultTimeout(60000);
