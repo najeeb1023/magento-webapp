@@ -1,6 +1,6 @@
 import { After, AfterAll, Before, BeforeAll, Status } from "@cucumber/cucumber";
 import { Browser, BrowserContext, chromium } from "@playwright/test";
-import { config } from "../../../playwright.config"
+import { config } from "../../../playwright.config";
 import { pageFixture } from "./pageFixture";
 
 let browser: Browser;
