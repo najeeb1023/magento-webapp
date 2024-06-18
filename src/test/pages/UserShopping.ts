@@ -33,13 +33,6 @@ export class MenSection {
             const el = await pageFixture.page.locator(getResource('attireSectionBtn').selectorValue.replace('FLAG', attire));
             await el.click();
         };
-        // for (let i=0;i<=getAttireOptions;i++){
-        //     console.log(getAttireOptions);
-        // };
-        // const getCountAttire = pageFixture.page.locator(getResource('attireSectionBtn').selectorValue.replace('FLAG', attire))
-        // await this.menSectionLocators.menAttire().innerText().then(value => console.log(value))
-        // const el = await expect(this.menSectionLocators.menAttire()).toContainText(attire).then(value => console.log(value))
-        // console.log(el)
     };
 
     public async showItems():Promise<void>{
@@ -47,26 +40,16 @@ export class MenSection {
         process.stdout.write('    Products shown -> ' + getNumberOfProducts + '\n');
         for(let i=1;i<=getNumberOfProducts;i++){
             const getEl = await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', i.toString())).allTextContents();
-            //  for (const text of getEl) {
-            //     const firstLine = text.split('\n')[1].trim();
-            //           const getItem = await getEl;
-            //           process.stdout.write(`    ${firstLine}${getItem}`);
-            //  };
              for (const text of getEl) {
-                //  const getItem = await getEl;
-                //  process.stdout.write(`    Item ${i} -> ${getItem}${firstLine}\n`);
                 console.log('    '+i +")" + " " + text.trim());
              };
-            
-            // console.log(getEl)
         };
-            
-        
-    //     for(let i=0;i<=getNumberOfProducts;i++){
-    //     await pageFixture.page.locator(getResource('productsShown').selectorValue.replace('FLAG', i.toString())).textContent();
-    //     const showCount = await this.menSectionLocators.itemsShown().textContent();
-    //     console.log(showCount);
-    // };
     };
 
+    public async selecRandomItem():Promise<void>{
+        const getNumberOfProducts = await this.menSectionLocators.productShown().count();
+        let ind: number = Math.floor(Math.random() * getNumberOfProducts);
+        await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)).dblclick();
+        
+    };
 };
