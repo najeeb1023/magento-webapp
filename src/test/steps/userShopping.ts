@@ -13,6 +13,10 @@ When("The user clicks on {string} option.", async function (attire: string){
     await menSection.goToAttire(attire);
 });
 
-Then("The products are shown.", async function (){
+When("The products are shown.", async function (){
      await menSection.showItems();
+});
+
+When("User navigates to a product.", async function (){
+    await menSection.selecRandomItem();
 });
