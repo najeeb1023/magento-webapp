@@ -49,7 +49,10 @@ export class MenSection {
     public async selecRandomItem():Promise<void>{
         const getNumberOfProducts = await this.menSectionLocators.productShown().count();
         let ind: number = Math.floor(Math.random() * getNumberOfProducts);
+        if (ind == 0) {
+            Math.floor(Math.random() * getNumberOfProducts);
+        } else {
         await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)).dblclick();
-        
+        };
     };
 };
