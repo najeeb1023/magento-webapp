@@ -21,10 +21,11 @@ After(async function ({pickle, result}) {
     if(result?.status == Status.PASSED){
         const img = await pageFixture.page.screenshot({path:`./test-results/screenshots/${pickle.name}.png`, type: "png"});
         await this.attach(img, "image/png");
+
     };
 });
 
 AfterAll(async function () {
-    await pageFixture.page.waitForTimeout(3000);
+    await pageFixture.page.waitForTimeout(2000);
     await browser.close();
 });
