@@ -13,5 +13,5 @@ Feature: Verify that the user is able to login into an already registered accoun
         Then The user is logged in.
 
         Examples:
-            | EmailAddress        | Password    |
-            | zulfiTest@gmail.com | testsss123! |
+            | EmailAddress        | Password      |
+            | facade23@gmail.com  | facading123!@ |

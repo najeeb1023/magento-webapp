@@ -13,6 +13,6 @@ Feature: Verify that the user is able to register an account.
         Then If the account is already registered then "<Email>" and "<Password>" is entered to sign in the user.
 
         Examples:
-            | FirstName | LastName  | Email                | Password     |
-            | TestZulfi | ZulfiTest | zulfiTest@gmail.com  | testsss123!  |
-            | UmdeyTest | LastNaw21 | udimswugh@gmail.com  | karaw22a!@r  |
+            | FirstName  | LastName  | Email                | Password       |
+            | TestZulfi  | ZulfiTest | zulfiTest@gmail.com  | testsss123!    |
+            | FacadeUser | UserFace  | facade23@gmail.com   | facading123!@  |
