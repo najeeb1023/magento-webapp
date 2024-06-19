@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "lunaapp": "cucumber-js --config=config/cucumber.js",
-    "lunaapp:tag": "cucumber-js --config=config/cucumber.js --tags "
+    "lunaapp:tags": "cucumber-js --config=config/cucumber.js --tags ",
+    "lunaapp:debug": "cucumber-js --config=config/cucumber.js --format cucumber-console-formatter --tags @MenShopping"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,11 @@
     "@cucumber/cucumber": "^10.8.0",
     "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.44.1",
-    "@types/node": "^20.14.2",
-    "semantic-release": "^24.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.3",
+    "@types/node": "^20.14.2",
+    "cucumber-console-formatter": "^1.0.0",
+    "semantic-release": "^24.0.0",
     "ts-node": "^10.9.2"
   }
 }
