@@ -7,6 +7,23 @@ import { Page, expect } from "@playwright/test";
         return menSectionPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     }
 
+    export class CategoryAndProductSelectionFacade{
+        private menSection: MenSection;
+
+        constructor(menSection: MenSection){
+         this.menSection = menSection;
+    };
+        
+        public async productSelection(section: string, attire: string){
+            await this.menSection.goSectionAndAttire(section, attire);
+        };
+
+        public async selectRandomItem(){
+            await this.menSection.showItems();
+            await this.menSection.selectRandomItem();
+        };
+};
+
     export class MenSection {
     constructor(public page: Page){
         pageFixture.page = page;
@@ -21,14 +38,9 @@ import { Page, expect } from "@playwright/test";
 
     };
 
-    public async goToSection(section: string):Promise<void>{
+    public async goSectionAndAttire(section: string, attire: string):Promise<void>{
         const el = pageFixture.page.locator(getResource('menSectionBtn').selectorValue.replace('FLAG', section));
         await el.click();
-        
-        
-    };
-
-    public async goToAttire(attire: string):Promise<void>{
         for(let i=0;i<=0;i++){
             const el = await pageFixture.page.locator(getResource('attireSectionBtn').selectorValue.replace('FLAG', attire));
             await el.click();
@@ -52,24 +64,8 @@ import { Page, expect } from "@playwright/test";
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
-        await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`));
+        const el = (pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)));
+        await el.dblclick();
         };
     };
-};
-    export class CategoryAndProductSelectionFacade{
-        private menSection: MenSection;
-
-        constructor(menSection: MenSection){
-         this.menSection = menSection;
-    };
-        
-        public async productSelection(section: string, attire: string){
-            await this.menSection.goToSection(section);
-            await this.menSection.goToAttire(attire);
-        };
-
-        public async selectRandomItem(){
-            await this.menSection.showItems();
-            await this.menSection.selectRandomItem();
-        };
 };
