@@ -7,7 +7,7 @@ import { Page, expect } from "@playwright/test";
         return menSectionPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     }
 
-export class MenSection {
+    export class MenSection {
     constructor(public page: Page){
         pageFixture.page = page;
     };
@@ -46,31 +46,30 @@ export class MenSection {
         };
     };
 
-    public async selecRandomItem():Promise<void>{
+    public async selectRandomItem():Promise<void>{
         const getNumberOfProducts = await this.menSectionLocators.productShown().count();
         let ind: number = Math.floor(Math.random() * getNumberOfProducts);
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
-        await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)).dblclick();
+        await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`));
         };
     };
 };
-
     export class CategoryAndProductSelectionFacade{
-        constructor(public page: Page){
-         pageFixture.page;
+        private menSection: MenSection;
+
+        constructor(menSection: MenSection){
+         this.menSection = menSection;
     };
         
         public async productSelection(section: string, attire: string){
-            let menSection = new MenSection(pageFixture.page);
-            await menSection.goToSection(section);
-            await menSection.goToAttire(attire);
+            await this.menSection.goToSection(section);
+            await this.menSection.goToAttire(attire);
         };
 
-        public async randomItemSelection(){
-            let menSection = new MenSection(pageFixture.page);
-            await menSection.showItems();
-            await menSection.selecRandomItem();
-        }
+        public async selectRandomItem(){
+            await this.menSection.showItems();
+            await this.menSection.selectRandomItem();
+        };
 };
