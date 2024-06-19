@@ -56,3 +56,21 @@ export class MenSection {
         };
     };
 };
+
+    export class CategoryAndProductSelectionFacade{
+        constructor(public page: Page){
+         pageFixture.page;
+    };
+        
+        public async productSelection(section: string, attire: string){
+            let menSection = new MenSection(pageFixture.page);
+            await menSection.goToSection(section);
+            await menSection.goToAttire(attire);
+        };
+
+        public async randomItemSelection(){
+            let menSection = new MenSection(pageFixture.page);
+            await menSection.showItems();
+            await menSection.selecRandomItem();
+        }
+};
