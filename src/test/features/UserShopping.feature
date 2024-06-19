@@ -9,10 +9,8 @@ Feature: Verify that the user is able to purchase some item.
 
     @MenShopping
     Scenario: User shops for Men Jackets.
-        When The user clicks on the "<Section>" section.
-        And The user clicks on "<Attire>" option.
-        And The products are shown.
-        And User navigates to a product.
+        When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
+        And The products are shown and user navigates to a product.
 
         Examples:
             | Section  | Attire   |
@@ -20,9 +18,8 @@ Feature: Verify that the user is able to purchase some item.
 
     @WomenShopping
     Scenario: User shops for Women Jackets.
-        When The user clicks on the "<Section>" section.
-        And The user clicks on "<Attire>" option.
-        Then The products are shown.
+        When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
+        And The products are shown and user navigates to a product.
 
         Examples:
             | Section    | Attire             |
