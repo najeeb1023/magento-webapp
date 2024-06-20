@@ -1,4 +1,5 @@
 import { LaunchOptions } from "@playwright/test";
+import logger from './logger/logger'
 
 export const config: LaunchOptions = {
   timeout: 600000,
@@ -6,7 +7,9 @@ export const config: LaunchOptions = {
   args:['--start-maximized'],
   slowMo: 300,
   logger: {
-    isEnabled: (name, severity) => true,
-    log: (name, severity, message, args) => console.log(`name = ${name} \n msg = ${message} \n severity = ${severity}`)
+    isEnabled: (name, severity) => name === 'api',
+    log: (name, timestamp, message, status) => {
+      logger.info(`[${name}] [${timestamp}] [${message}] [${status}]`)
+    },
   }
 }
