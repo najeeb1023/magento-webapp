@@ -8,8 +8,8 @@ export const config: LaunchOptions = {
   slowMo: 300,
   logger: {
     isEnabled: (name, severity) => name === 'api',
-    log: (name, timestamp, message, status) => {
-      logger.info(`[${name}] [${timestamp}] [${message}] [${status}]`)
+    log: (name, timestamp, message, ) => {
+      logger.info(`[${timestamp}] ${message}`)
     },
   }
 }
