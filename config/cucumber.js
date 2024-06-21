@@ -6,19 +6,19 @@ module.exports = {
     formatOptions: {
         snippetInterface: "async-await",
         colorsEnabled: true,
-        theme: {
-            ...DEFAULT_THEME,
-            'step status': ['red'],
-            'step text': ['green'],
-            'feature description': ['white', 'italic'],
-            'feature keyword': ['cyan', 'bold'],
-            'feature name': ['white', 'underline'],
-            'tag': ['green'],
-            'scenario keyword': ['green'],
-            'scenario name': ['white'],
-            'step keyword': ['green'],
-            'step status': ['bold', 'red'],
-        },
+        // theme: {
+        //     ...DEFAULT_THEME,
+        //     'step status': ['red'],
+        //     'step text': ['green'],
+        //     'feature description': ['white', 'italic'],
+        //     'feature keyword': ['cyan', 'bold'],
+        //     'feature name': ['white', 'underline'],
+        //     'tag': ['green'],
+        //     'scenario keyword': ['green'],
+        //     'scenario name': ['white'],
+        //     'step keyword': ['green'],
+        //     'step status': ['bold', 'red'],
+        // },
         console: {
             showLogs: true,
             showProgress: false
