@@ -37,6 +37,7 @@ export class AccountRegister {
     public async assertAccPage ():Promise<void> {
         await this.registrationPageLocators.createAnAccountBtn().click();
         await expect(this.registrationPageLocators.createAccHeading()).toHaveText('Create New Customer Account');
+        
     };
 
     public async enterUserDetails(firstname: string, lastname: string, email: string, password: string):Promise<void> {

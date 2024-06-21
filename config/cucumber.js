@@ -9,7 +9,7 @@ module.exports = {
         theme: {
             ...DEFAULT_THEME,
             'step status': ['red'],
-            'step text': ['white'],
+            'step text': ['green'],
             'feature description': ['white', 'italic'],
             'feature keyword': ['cyan', 'bold'],
             'feature name': ['white', 'underline'],
@@ -19,6 +19,10 @@ module.exports = {
             'step keyword': ['green'],
             'step status': ['bold', 'red'],
         },
+        console: {
+            showLogs: true,
+            showProgress: false
+        }
     },
     compilerOptions: {
         esModuleInterop: true,
@@ -38,7 +42,7 @@ module.exports = {
     format: [
         "html:test-results/reports/cucumber-report.html",
         "json:test-results/reports/cucumber-report.json",
-        "@cucumber/pretty-formatter"
+        "@qavajs/console-formatter"
     ],
     },
 };

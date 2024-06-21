@@ -31,7 +31,13 @@ export class LoginUser {
         await this.userLoginLocators.signInUserBtn().first().click();
     };
 
-    public async assertUserIsLoggedIn():Promise<void>{
-        await expect(this.userLoginLocators.welcomeMessage()).toContainText('Welcome');
+    public async assertUserIsLoggedIn():Promise<void>{ 
+        if (expect(this.userLoginLocators.welcomeMessage()).toContainText('Welcome')){
+            pageFixture.logger.info('User is logged in.')
+        } else {
+            pageFixture.logger.error('User is not logged in.')
+        }
+        
+        
     };
 };

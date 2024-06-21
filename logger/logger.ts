@@ -3,25 +3,26 @@ import { allColors } from 'winston/lib/winston/config';
 
 const { combine, timestamp, printf, colorize } = format;
 
-const customFormat = printf(({ timestamp, level, message }) => {
+const createCustomLogger = (scenarioName: string) => {
+  const customFormat = printf(({ timestamp, level, message }) => {
   return `    [${timestamp}] ${level} ${message}`;
-});
+  });
 
-const logger = createLogger({
-  level: 'info',
-  format: combine(
+  return createLogger({
+    level: 'info',
+    format: combine(
     timestamp(
       {
-        format: 'DD-M-YY HH:mm:ss'
+        format: 'DD-M-YY HH:mm:ss',
       }
     ),
     colorize(allColors),
     customFormat
   ),
-  transports: [
+    transports: [
     new transports.Console(),
     new transports.File({
-      filename: 'test-results/logs/log.log',
+      filename: `test-results/logs/${scenarioName}/log.log`,
       level: 'info',
       format: format.combine(
         timestamp({
@@ -29,9 +30,11 @@ const logger = createLogger({
         }),
         format.align(),
         customFormat
-      )
-    })
-  ]
-});
+      ),
+    }),
+  ],
+  });
 
-export default logger;
+};
+
+export default createCustomLogger;

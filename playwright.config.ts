@@ -1,5 +1,8 @@
 import { LaunchOptions } from "@playwright/test";
-import logger from './logger/logger'
+import createCustomLogger from "./logger/logger";
+
+let scenarioName;
+const logger = createCustomLogger(scenarioName);
 
 export const config: LaunchOptions = {
   timeout: 600000,

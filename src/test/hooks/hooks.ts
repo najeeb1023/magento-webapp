@@ -2,8 +2,7 @@ import { After, AfterAll, Before, BeforeAll, Status } from "@cucumber/cucumber";
 import { Browser, BrowserContext, chromium } from "@playwright/test";
 import { config } from "../../../playwright.config";
 import { pageFixture } from "./pageFixture";
-import { createLogger } from "winston";
-import logger from '../../../logger/logger'
+import createCustomLogger from "../../../logger/logger";
 
 let browser: Browser;
 let context: BrowserContext;
@@ -13,11 +12,11 @@ BeforeAll(async function () {
 });
 
 Before(async function ({ pickle }) {
-    // const scenarioName = pickle.name + pickle.id;
+    const scenarioName = pickle.name + pickle.id;
     context = await browser.newContext({viewport: null});
     const page = await context.newPage();
     pageFixture.page = page;
-    pageFixture.logger = logger;
+    pageFixture.logger = createCustomLogger(scenarioName)
     // pageFixture.logger = createLogger(options(scenarioName));
 });
 
