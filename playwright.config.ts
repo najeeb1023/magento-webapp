@@ -1,10 +1,18 @@
 import { LaunchOptions } from "@playwright/test";
+import createCustomLogger from "./logger/logger";
+
+let scenarioName;
+const logger = createCustomLogger(scenarioName);
 
 export const config: LaunchOptions = {
   timeout: 600000,
   headless: true,
   args:['--start-maximized'],
-  slowMo: 300
-  
-  
+  slowMo: 300,
+  logger: {
+    isEnabled: (name, severity) => name === 'api',
+    log: (name, timestamp, message, ) => {
+      logger.info(`[${timestamp}] ${message}`)
+    },
+  }
 }

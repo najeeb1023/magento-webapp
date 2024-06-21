@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "lunaapp": "cucumber-js --config=config/cucumber.js",
-    "lunaapp:tag": "cucumber-js --config=config/cucumber.js --tags "
+    "lunaapp:tags": "cucumber-js --config=config/cucumber.js --tags ",
+    "lunaapp:debug": "cucumber-js --config=config/cucumber.js --format cucumber-console-formatter --tags @debug"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +13,13 @@
   "description": "",
   "devDependencies": {
     "@cucumber/cucumber": "^10.8.0",
-    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.44.1",
-    "@types/node": "^20.14.2",
-    "semantic-release": "^24.0.0",
+    "@qavajs/console-formatter": "^0.7.2",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.3",
-    "ts-node": "^10.9.2"
+    "@types/node": "^20.14.2",
+    "semantic-release": "^24.0.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.13.0"
   }
 }

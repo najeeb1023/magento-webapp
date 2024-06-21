@@ -1,4 +1,4 @@
-import {Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
+import { Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
 import { AccountRegister } from '../pages/AccountRegister';
 import { pageFixture } from '../hooks/pageFixture';
 

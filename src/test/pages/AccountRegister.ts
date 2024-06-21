@@ -3,6 +3,7 @@ import { pageFixture } from "../hooks/pageFixture";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import * as registrationPageLocators from "../resources/registrationPage.json";
 import { LoginUser } from "./UserLogin";
+import winston from "winston";
 
     function getResource(resourceName: string) {
         return registrationPageLocators.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
@@ -30,11 +31,13 @@ export class AccountRegister {
 
     public async visitWebPage ():Promise<void> {
         await pageFixture.page.goto('https://magento.softwaretestingboard.com/');
+        pageFixture.logger.info('Navigated to the webpage - SELF WRITTEN.')
     };
 
     public async assertAccPage ():Promise<void> {
         await this.registrationPageLocators.createAnAccountBtn().click();
         await expect(this.registrationPageLocators.createAccHeading()).toHaveText('Create New Customer Account');
+        
     };
 
     public async enterUserDetails(firstname: string, lastname: string, email: string, password: string):Promise<void> {
