@@ -16,7 +16,7 @@
         },
         {
             "elementName": "itemsShown",
-            "selectorValue": "//li[contains(@class,'item product product-item')][FLAG]//div[contains(@class,'product details product-item-details')]//strong"
+            "selectorValue": "//li[contains(@class,'item product product-item')][FLAG]//div[contains(@class,'product details product-item-details')]//strong//a"
         },
         {
             "elementName": "productsShown",
