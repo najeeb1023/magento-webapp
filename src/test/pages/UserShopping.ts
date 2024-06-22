@@ -29,7 +29,7 @@ import { Page, expect } from "@playwright/test";
         pageFixture.page = page;
     };
 
-    menSectionLocators = {
+    userShoppingLocators = {
         menSectionHeader:() => pageFixture.page.locator(getResource('menSectionBtn').selectorValue),
         attireSectionBtn:() => pageFixture.page.locator(getResource('attireSectionBtn').selectorValue),
         itemsShown:() => pageFixture.page.locator(getResource('itemsShown').selectorValue),
@@ -37,7 +37,11 @@ import { Page, expect } from "@playwright/test";
         productShown:() => pageFixture.page.locator(getResource('productsShown').selectorValue),
         productPrice:() => pageFixture.page.locator(getResource('productPrice').selectorValue),
         shoppingList:() => pageFixture.page.locator(getResource('shoppingList').selectorValue),
-        productSize:() => pageFixture.page.locator(getResource('productSize').selectorValue)
+        productSize:() => pageFixture.page.locator(getResource('productSize').selectorValue),
+        getProductSize:() => pageFixture.page.locator(getResource('getProductSize').selectorValue),
+        getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue),
+        getCurrentSelectedColor:() => pageFixture.page.locator(getResource('getCurrentSelectedColor').selectorValue),
+        getColorSwatches:() => pageFixture.page.locator(getResource('getColorSwatches').selectorValue),
 
     };
 
@@ -51,7 +55,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async showItems():Promise<void>{
-        const getNumberOfProducts = await this.menSectionLocators.productShown().count();
+        const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
         process.stdout.write('    Products shown -> ' + getNumberOfProducts + '\n');
         for(let i=1;i<=getNumberOfProducts;i++){
             const getEl = await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', i.toString())).allTextContents();
@@ -62,16 +66,17 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async selectRandomProduct():Promise<void>{
-        const getNumberOfProducts = await this.menSectionLocators.productShown().count();
-        let ind: number = Math.floor(Math.random() * getNumberOfProducts);
+        const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
+        let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
+        
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
         const el = (pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)));
         await expect(el).toBeVisible();
         await el.dblclick({force: true, timeout: 3000});
-        const list = await this.menSectionLocators.shoppingList().isVisible();
-        const listCount = await this.menSectionLocators.shoppingList().count();
+        const list = await this.userShoppingLocators.shoppingList().isVisible();
+        const listCount = await this.userShoppingLocators.shoppingList().count();
         if (list == true){
             pageFixture.logger.error('User not navigated, retrying click');
             await pageFixture.page.waitForLoadState('networkidle');
@@ -84,12 +89,39 @@ import { Page, expect } from "@playwright/test";
         };
     };
 
-    public async getProductPrice():Promise<void>{
-        const priceText = (await this.menSectionLocators.productPrice().textContent()).trim();
+    public async getProductPriceAndSizes():Promise<void>{
+        const priceText = (await this.userShoppingLocators.productPrice().textContent()).trim();
+        if(await this.userShoppingLocators.productPrice().isVisible() == true){
+        pageFixture.logger.error('Product price is not visible, attempting to click product again.')
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
         console.log("The price of the product -> "+matchPriceText[0]);
-        const text = (await this.menSectionLocators.productSize().textContent()).trim();
-        console.log(text)
+        const sizeText = (await this.userShoppingLocators.productSize().textContent()).trim();
+        const getSizes = await this.userShoppingLocators.getProductSizesAvailable().count();
+        console.log(sizeText+'s' + ' available are: ');
+        for(let i=1;i<=getSizes;i++){
+            const el = await pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', i.toString())).allTextContents();
+            for (const text of el) {
+                console.log(''+i +")" + " " + text.trim());
+             };
+        }
+    } else {
+        return this.selectRandomProduct();
+    }
+    };
+
+    public async selectAndGetProductColors():Promise<void>{
+        const getColorSwatch = await this.userShoppingLocators.getColorSwatches().count();
+        console.log('Color found: ' + getColorSwatch);
+        let ind: number = Math.floor(Math.random() * (getColorSwatch - 1)) + 1;
+        if (ind == 0) {
+            Math.floor(Math.random() * getColorSwatch);
+        } else {
+        const colorToBeSelect = await pageFixture.page.locator(getResource('colorSwatch').selectorValue.replace('FLAG', `${ind}`));
+        await colorToBeSelect.click();
+        await this.userShoppingLocators.getCurrentSelectedColor().isVisible();
+        const getColor = await this.userShoppingLocators.getCurrentSelectedColor().textContent();
+        console.log(getColor);
+        };
     };
 };

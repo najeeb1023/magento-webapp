@@ -33,6 +33,26 @@
         {
             "elementName": "productSize",
             "selectorValue": "//div[contains(@class,'swatch-attribute size')]//span[contains(.,'Size')]"
+        },
+        {
+            "elementName": "getProductSize",
+            "selectorValue": "//div[contains(@class,'swatch-option text')][FLAG]"
+        },
+        {
+            "elementName": "getProductSizesAvailable",
+            "selectorValue": "//div[contains(@class,'swatch-option text')]"
+        },
+        {
+            "elementName": "getCurrentSelectedColor",
+            "selectorValue": "//div[contains(@class,'swatch-attribute color')]//span[2]"
+        },
+        {
+            "elementName": "getColorSwatches",
+            "selectorValue": "//div[contains(@class,'swatch-option color')]"
+        },
+        {
+            "elementName": "colorSwatch",
+            "selectorValue": "//div[contains(@class,'swatch-option color')][contains(@role,'option')][FLAG]"
         }
         ]
 }

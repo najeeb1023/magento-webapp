@@ -14,6 +14,7 @@ When("The products are shown and user navigates to a product.", async function (
     await categoryAndProductSectionFacade.selectRandomItem();
 });
 
-When("The price of that product is shown.", async function (){
-    await userShopping.getProductPrice();
+When("The price, size of that product is shown.", async function (){
+    await userShopping.getProductPriceAndSizes();
+    await userShopping.selectAndGetProductColors();
 });

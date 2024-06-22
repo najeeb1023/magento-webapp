@@ -1,13 +1,12 @@
 import { LaunchOptions } from "@playwright/test";
 import createCustomLogger from "./logger/logger";
 
-let scenarioName;
-const logger = createCustomLogger(scenarioName);
+const logger = createCustomLogger();
 
 export const config: LaunchOptions = {
   timeout: 600000,
   headless: true,
-  // args:['--window-position=-1070,-100'], // customized for left-sided portrait monitor.
+  // args:['--window-position=-1070,-100'], //* customized for left-sided portrait monitor.
   slowMo: 300,
   logger: {
     isEnabled: (name, severity) => name === 'api',
