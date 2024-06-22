@@ -88,6 +88,8 @@ import { Page, expect } from "@playwright/test";
 
     public async getProductPrice():Promise<void>{
         const priceText = (await this.menSectionLocators.productPrice().textContent()).trim();
+        if(expect(await this.menSectionLocators.productPrice().isVisible)){
+        pageFixture.logger.error('Product price is not visible, attempting to click product again.')
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
         console.log("The price of the product -> "+matchPriceText[0]);
@@ -100,5 +102,8 @@ import { Page, expect } from "@playwright/test";
                 console.log(''+i +")" + " " + text.trim());
              };
         }
+    } else {
+        return this.selectRandomProduct();
+    }
     };
 };
