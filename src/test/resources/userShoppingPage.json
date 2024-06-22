@@ -21,7 +21,18 @@
         {
             "elementName": "productsShown",
             "selectorValue": "//li[contains(@class,'item product product-item')]"
+        },
+        {
+            "elementName": "productPrice",
+            "selectorValue": "//div[contains(@class,'product-info-price')]//span[contains(@class,'normal-price')]"
+        },
+        {
+            "elementName": "shoppingList",
+            "selectorValue": "//div[contains(@class,'sidebar sidebar-main')]"
+        },
+        {
+            "elementName": "productSize",
+            "selectorValue": "//div[contains(@class,'swatch-attribute size')]//span[contains(.,'Size')]"
         }
-
         ]
 }

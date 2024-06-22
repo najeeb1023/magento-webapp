@@ -17,6 +17,7 @@ Before(async function ({ pickle }) {
     const page = await context.newPage();
     pageFixture.page = page;
     pageFixture.logger = createCustomLogger(scenarioName)
+
     // pageFixture.logger = createLogger(options(scenarioName));
 });
 
