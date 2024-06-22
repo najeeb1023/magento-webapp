@@ -39,7 +39,9 @@ import { Page, expect } from "@playwright/test";
         shoppingList:() => pageFixture.page.locator(getResource('shoppingList').selectorValue),
         productSize:() => pageFixture.page.locator(getResource('productSize').selectorValue),
         getProductSize:() => pageFixture.page.locator(getResource('getProductSize').selectorValue),
-        getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue)
+        getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue),
+        getCurrentSelectedColor:() => pageFixture.page.locator(getResource('getCurrentSelectedColor').selectorValue),
+        getColorSwatches:() => pageFixture.page.locator(getResource('getColorSwatches').selectorValue),
 
     };
 
@@ -65,7 +67,8 @@ import { Page, expect } from "@playwright/test";
 
     public async selectRandomProduct():Promise<void>{
         const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
-        let ind: number = Math.floor(Math.random() * getNumberOfProducts);
+        let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
+        
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
@@ -86,7 +89,7 @@ import { Page, expect } from "@playwright/test";
         };
     };
 
-    public async getProductPrice():Promise<void>{
+    public async getProductPriceAndSizes():Promise<void>{
         const priceText = (await this.userShoppingLocators.productPrice().textContent()).trim();
         if(await this.userShoppingLocators.productPrice().isVisible() == true){
         pageFixture.logger.error('Product price is not visible, attempting to click product again.')
@@ -105,5 +108,20 @@ import { Page, expect } from "@playwright/test";
     } else {
         return this.selectRandomProduct();
     }
+    };
+
+    public async selectAndGetProductColors():Promise<void>{
+        const getColorSwatch = await this.userShoppingLocators.getColorSwatches().count();
+        console.log('Color found: ' + getColorSwatch);
+        let ind: number = Math.floor(Math.random() * (getColorSwatch - 1)) + 1;
+        if (ind == 0) {
+            Math.floor(Math.random() * getColorSwatch);
+        } else {
+        const colorToBeSelect = await pageFixture.page.locator(getResource('colorSwatch').selectorValue.replace('FLAG', `${ind}`));
+        await colorToBeSelect.click();
+        await this.userShoppingLocators.getCurrentSelectedColor().isVisible();
+        const getColor = await this.userShoppingLocators.getCurrentSelectedColor().textContent();
+        console.log(getColor);
+        };
     };
 };
