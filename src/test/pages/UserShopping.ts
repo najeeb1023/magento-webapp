@@ -8,19 +8,19 @@ import { Page, expect } from "@playwright/test";
     }
 
     export class CategoryAndProductSelectionFacade{
-        private menSection: UserShopping;
+        private userShopping: UserShopping;
 
         constructor(menSection: UserShopping){
-         this.menSection = menSection;
+         this.userShopping = menSection;
     };
         
         public async productSelection(section: string, attire: string){
-            await this.menSection.goSectionAndAttire(section, attire);
+            await this.userShopping.goSectionAndAttire(section, attire);
         };
 
         public async selectRandomItem(){
-            await this.menSection.showItems();
-            await this.menSection.selectRandomProduct();
+            await this.userShopping.showItems();
+            await this.userShopping.selectRandomProduct();
         };
 };
 

@@ -5,7 +5,7 @@
   "scripts": {
     "lunaapp": "cucumber-js --config=config/cucumber.js",
     "lunaapp:tags": "cucumber-js --config=config/cucumber.js --tags ",
-    "lunaapp:debug": "cucumber-js --config=config/cucumber.js --tags @debug"
+    "lunaapp:debug": "cucumber-js --config=config/cucumber.js --tags @MenShopping"
   },
   "keywords": [],
   "author": "",

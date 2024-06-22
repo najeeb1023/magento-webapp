@@ -30,7 +30,6 @@ export class AccountRegister {
 
     public async visitWebPage ():Promise<void> {
         await pageFixture.page.goto('https://magento.softwaretestingboard.com/');
-        pageFixture.logger.info('Navigated to the webpage - SELF WRITTEN.')
     };
 
     public async assertAccPage ():Promise<void> {
