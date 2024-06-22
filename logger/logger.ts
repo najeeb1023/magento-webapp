@@ -3,7 +3,7 @@ import { allColors } from 'winston/lib/winston/config';
 
 const { combine, timestamp, printf, colorize, splat } = format;
 
-const createCustomLogger = (scenarioName: string) => {
+const createCustomLogger = () => {
   const customFormat = printf(({ timestamp, level, message,}) => {
   return `  [${timestamp}] ${level} ${message}`;
   });
@@ -27,7 +27,8 @@ const createCustomLogger = (scenarioName: string) => {
       )
     }),
     new transports.File({
-      filename: `test-results/logs/${scenarioName}/log.log`,
+      filename: `test-results/logs/log.log`,
+      options: { flags: 'w' },
       level: 'info',
       format: format.combine(
         timestamp({

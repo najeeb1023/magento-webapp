@@ -8,17 +8,16 @@ let browser: Browser;
 let context: BrowserContext;
 
 BeforeAll(async function () {
+    pageFixture.logger = createCustomLogger();
+    pageFixture.logger.info('----------------- New Test Run -----------------');
     browser = await chromium.launch(config);
 });
 
-Before(async function ({ pickle }) {
-    const scenarioName = pickle.name + pickle.id;
+Before(async function () {
     context = await browser.newContext({viewport: null});
     const page = await context.newPage();
     pageFixture.page = page;
-    pageFixture.logger = createCustomLogger(scenarioName)
-
-    // pageFixture.logger = createLogger(options(scenarioName));
+    // pageFixture.logger = createCustomLogger();
 });
 
 After(async function ({ pickle, result }) {
