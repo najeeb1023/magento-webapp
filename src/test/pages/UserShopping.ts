@@ -88,7 +88,7 @@ import { Page, expect } from "@playwright/test";
 
     public async getProductPrice():Promise<void>{
         const priceText = (await this.userShoppingLocators.productPrice().textContent()).trim();
-        if(await this.userShoppingLocators.productPrice().isVisible){
+        if(await this.userShoppingLocators.productPrice().isVisible() == true){
         pageFixture.logger.error('Product price is not visible, attempting to click product again.')
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
