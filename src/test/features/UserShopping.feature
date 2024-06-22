@@ -11,7 +11,7 @@ Feature: Verify that the user is able to purchase some item.
     Scenario: User shops for Men Jackets.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
-        And The price of that product is shown.
+        And The price, size of that product is shown.
 
         Examples:
             | Section  | Attire   |
@@ -21,7 +21,7 @@ Feature: Verify that the user is able to purchase some item.
     Scenario: User shops for Women Jackets.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
-        And The price of that product is shown.
+        And The price, size of that product is shown.
 
         Examples:
             | Section    | Attire             |

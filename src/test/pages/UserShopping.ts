@@ -37,7 +37,9 @@ import { Page, expect } from "@playwright/test";
         productShown:() => pageFixture.page.locator(getResource('productsShown').selectorValue),
         productPrice:() => pageFixture.page.locator(getResource('productPrice').selectorValue),
         shoppingList:() => pageFixture.page.locator(getResource('shoppingList').selectorValue),
-        productSize:() => pageFixture.page.locator(getResource('productSize').selectorValue)
+        productSize:() => pageFixture.page.locator(getResource('productSize').selectorValue),
+        getProductSize:() => pageFixture.page.locator(getResource('getProductSize').selectorValue),
+        getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue)
 
     };
 
@@ -89,7 +91,14 @@ import { Page, expect } from "@playwright/test";
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
         console.log("The price of the product -> "+matchPriceText[0]);
-        const text = (await this.menSectionLocators.productSize().textContent()).trim();
-        console.log(text)
+        const sizeText = (await this.menSectionLocators.productSize().textContent()).trim();
+        const getSizes = await this.menSectionLocators.getProductSizesAvailable().count();
+        console.log(sizeText+'s' + ' available are: ');
+        for(let i=1;i<=getSizes;i++){
+            const el = await pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', i.toString())).allTextContents();
+            for (const text of el) {
+                console.log(''+i +")" + " " + text.trim());
+             };
+        }
     };
 };

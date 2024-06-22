@@ -33,6 +33,14 @@
         {
             "elementName": "productSize",
             "selectorValue": "//div[contains(@class,'swatch-attribute size')]//span[contains(.,'Size')]"
+        },
+        {
+            "elementName": "getProductSize",
+            "selectorValue": "//div[contains(@class,'swatch-option text')][FLAG]"
+        },
+        {
+            "elementName": "getProductSizesAvailable",
+            "selectorValue": "//div[contains(@class,'swatch-option text')]"
         }
         ]
 }
