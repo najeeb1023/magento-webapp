@@ -1,4 +1,4 @@
-const { DEFAULT_THEME } = require("@cucumber/pretty-formatter"); // pretty formatter removed.
+const { DEFAULT_THEME } = require("@cucumber/pretty-formatter");
 
 module.exports = {
     
