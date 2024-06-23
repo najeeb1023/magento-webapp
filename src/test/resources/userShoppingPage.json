@@ -3,7 +3,7 @@
     "webElements": [
 
         {
-            "elementName": "menSectionBtn",
+            "elementName": "shoppingSectionHeader",
             "selectorValue": "//span[contains(.,'FLAG')]"
         },
         {
@@ -37,6 +37,10 @@
         {
             "elementName": "getProductSize",
             "selectorValue": "//div[contains(@class,'swatch-option text')][FLAG]"
+        },
+        {
+            "elementName": "getSelectedProductSize",
+            "selectorValue": "//div[contains(@class,'swatch-attribute size')]//span[2]"
         },
         {
             "elementName": "getProductSizesAvailable",
