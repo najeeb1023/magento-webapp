@@ -7,4 +7,3 @@ Dockerfile
 .vscode/
 Reports/
 **/.vscode/
-playwright.config.ts
