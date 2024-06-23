@@ -57,6 +57,10 @@
         {
             "elementName": "colorSwatch",
             "selectorValue": "//div[contains(@class,'swatch-option color')][contains(@role,'option')][FLAG]"
+        },
+        {
+            "elementName": "addToCartBtn",
+            "selectorValue": "//div[contains(@class,'actions')]//button[contains(@title,'Add to Cart')]"
         }
         ]
 }

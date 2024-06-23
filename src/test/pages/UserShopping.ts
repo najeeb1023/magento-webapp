@@ -1,10 +1,15 @@
 import { pageFixture } from "../hooks/pageFixture";
 import * as userShoppingPage from "../resources/userShoppingPage.json";
+import * as registerPage from "../resources/registrationPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 
     function getResource(resourceName: string){
         return userShoppingPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
+    }
+
+    function getResourceRegisterPage(resourceName: string){
+        return registerPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     }
 
     export class CategoryAndProductSelectionFacade{
@@ -25,7 +30,8 @@ import { Page, expect } from "@playwright/test";
 
         public async showProductDetails(){
             await this.userShopping.getProductPriceAndSizes();
-            await this.userShopping.selectAndGetProductColors()
+            await this.userShopping.selectAndGetProductColors();
+            await this.userShopping.addToCartProduct();
         };
 };
 
@@ -47,7 +53,9 @@ import { Page, expect } from "@playwright/test";
         getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue),
         getCurrentSelectedColor:() => pageFixture.page.locator(getResource('getCurrentSelectedColor').selectorValue),
         getColorSwatches:() => pageFixture.page.locator(getResource('getColorSwatches').selectorValue),
-        getSelectedProductSize:() => pageFixture.page.locator(getResource('getSelectedProductSize').selectorValue)
+        getSelectedProductSize:() => pageFixture.page.locator(getResource('getSelectedProductSize').selectorValue),
+        pageMessage:() => pageFixture.page.locator(getResourceRegisterPage('pageMessage').selectorValue),
+        addToCartBtn:() => pageFixture.page.locator(getResource('addToCartBtn').selectorValue)
 
     };
 
@@ -66,7 +74,6 @@ import { Page, expect } from "@playwright/test";
         for(let i=1;i<=getNumberOfProducts;i++){
             const getEl = await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', i.toString())).allTextContents();
              for (const text of getEl) {
-                //console.log(''+i +")" + " " + '\u001b[34m',text.trim());
                 console.log(''+i +")" + " " + '\x1b[36m%s\x1b[0m',text.trim());
              };
         };
@@ -135,6 +142,11 @@ import { Page, expect } from "@playwright/test";
         const getColor = await this.userShoppingLocators.getCurrentSelectedColor().textContent();
         console.log('Selected color: ' +getColor);
         };
+    };
+
+    public async addToCartProduct():Promise<void>{
+        await this.userShoppingLocators.addToCartBtn().click();
+        await  expect(this.userShoppingLocators.pageMessage()).toBeVisible();
     };
 
     
