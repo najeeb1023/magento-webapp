@@ -1,6 +1,6 @@
 import { pageFixture } from "../hooks/pageFixture";
 import * as userShoppingPage from "../resources/userShoppingPage.json";
-import * as registerPage from "../resources/registrationPage.json";
+import * as registrationPage from "../resources/registrationPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 
@@ -9,7 +9,7 @@ import { Page, expect } from "@playwright/test";
     }
 
     function getResourceRegisterPage(resourceName: string){
-        return registerPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
+        return registrationPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     }
 
     export class CategoryAndProductSelectionFacade{

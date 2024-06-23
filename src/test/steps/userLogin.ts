@@ -16,3 +16,7 @@ When("The user enters correct {string} and {string}.", async function (emailAddr
 Then("The user is logged in.", async function (){
     await userLogin.assertUserIsLoggedIn();
 });
+
+Then("The user is not logged in.", async function (){
+    await userLogin.assertUserIsNotLoggedIn();
+});
