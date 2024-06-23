@@ -3,7 +3,7 @@
     "webElements": [
 
         {
-            "elementName": "menSectionBtn",
+            "elementName": "shoppingSectionHeader",
             "selectorValue": "//span[contains(.,'FLAG')]"
         },
         {

@@ -10,8 +10,8 @@ import { Page, expect } from "@playwright/test";
     export class CategoryAndProductSelectionFacade{
         private userShopping: UserShopping;
 
-        constructor(menSection: UserShopping){
-         this.userShopping = menSection;
+        constructor(userShopping: UserShopping){
+         this.userShopping = userShopping;
     };
         
         public async productSelection(section: string, attire: string){
@@ -22,6 +22,11 @@ import { Page, expect } from "@playwright/test";
             await this.userShopping.showItems();
             await this.userShopping.selectRandomProduct();
         };
+
+        public async showProductDetails(){
+            await this.userShopping.getProductPriceAndSizes();
+            await this.userShopping.selectAndGetProductColors()
+        };
 };
 
     export class UserShopping {
@@ -30,7 +35,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     userShoppingLocators = {
-        menSectionHeader:() => pageFixture.page.locator(getResource('menSectionBtn').selectorValue),
+        shoppingSectionHeader:() => pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue),
         attireSectionBtn:() => pageFixture.page.locator(getResource('attireSectionBtn').selectorValue),
         itemsShown:() => pageFixture.page.locator(getResource('itemsShown').selectorValue),
         attireSectionOptions:() => pageFixture.page.locator(getResource('attireSectionOptions').selectorValue),
@@ -47,7 +52,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async goSectionAndAttire(section: string, attire: string):Promise<void>{
-        const el = pageFixture.page.locator(getResource('menSectionBtn').selectorValue.replace('FLAG', section));
+        const el = pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue.replace('FLAG', section));
         await el.click();
         for(let i=0;i<=0;i++){
             const el = await pageFixture.page.locator(getResource('attireSectionBtn').selectorValue.replace('FLAG', attire));
@@ -57,11 +62,12 @@ import { Page, expect } from "@playwright/test";
 
     public async showItems():Promise<void>{
         const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
-        process.stdout.write('    Products shown -> ' + getNumberOfProducts + '\n');
+        console.log('    Products shown -> ' + getNumberOfProducts + '\n');
         for(let i=1;i<=getNumberOfProducts;i++){
             const getEl = await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', i.toString())).allTextContents();
              for (const text of getEl) {
-                console.log(''+i +")" + " " + text.trim());
+                //console.log(''+i +")" + " " + '\u001b[34m',text.trim());
+                console.log(''+i +")" + " " + '\x1b[36m%s\x1b[0m',text.trim());
              };
         };
     };
@@ -79,7 +85,7 @@ import { Page, expect } from "@playwright/test";
         const list = await this.userShoppingLocators.shoppingList().isVisible();
         const listCount = await this.userShoppingLocators.shoppingList().count();
         if (list == true){
-            pageFixture.logger.error('User not navigated, retrying click');
+            pageFixture.logger.warn('User not navigated, retrying click');
             await pageFixture.page.waitForLoadState('networkidle');
             for(let i=0;i<listCount;i++){
             await el.dblclick({force: true, timeout: 3000});
@@ -93,17 +99,17 @@ import { Page, expect } from "@playwright/test";
     public async getProductPriceAndSizes():Promise<void>{
         const priceText = (await this.userShoppingLocators.productPrice().textContent()).trim();
         if(await this.userShoppingLocators.productPrice().isVisible() == true){
-        pageFixture.logger.error('Product price is not visible, attempting to click product again.')
+        pageFixture.logger.warn('Product price is not visible, attempting to click product again.')
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
         console.log("The price of the product -> "+matchPriceText[0]);
         const sizeText = (await this.userShoppingLocators.productSize().textContent()).trim();
         const getSizes = await this.userShoppingLocators.getProductSizesAvailable().count();
-        console.log(sizeText+'s' + ' available are: ');
+        console.log('\x1b[36m%s\x1b[0m',sizeText+'s' + ' available are: ');
         for(let i=1;i<=getSizes;i++){
             const el = await pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', i.toString())).allTextContents();
             for (const text of el) {
-                console.log(''+i +")" + " " + text.trim());
+                console.log(''+i +")" + " " + '\x1b[36m%s\x1b[0m',text.trim());
              };
         }
         } else {
@@ -127,7 +133,7 @@ import { Page, expect } from "@playwright/test";
         await colorToBeSelect.click();
         await this.userShoppingLocators.getCurrentSelectedColor().isVisible();
         const getColor = await this.userShoppingLocators.getCurrentSelectedColor().textContent();
-        console.log(getColor);
+        console.log('Selected color: ' +getColor);
         };
     };
 
