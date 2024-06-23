@@ -5,7 +5,8 @@
 
 ## Overview
 
-This repository contains a test automation framework for the Luma web application using Playwright and Cucumber. The framework is designed with Page Object Model (POM) and Facade design patterns to ensure maintainability and scalability.
+This repository contains a test automation framework for the Luma web application using Playwright and Cucumber.  
+The framework is designed with Page Object Model (POM) and Facade design patterns to ensure maintainability and scalability.
 
 ## Features
 
@@ -34,13 +35,13 @@ This repository contains a test automation framework for the Luma web applicatio
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository:  
    git clone https://github.com/najeeb1023/magento-webapp.git
 
-2. Install dependencies:
+2. Install dependencies:  
    npm i
 
-3. To run the project:
-   cucumber:luma - To run all the test scenarios.
-   cucumber:luma:tags - Add your scenario tag in the end using -> @tag.
-   cucumber:luma:debug - After attatching the debugger you can easily debug the desired scenario.
+3. To run the project:  
+   cucumber:luma - To run all the test scenarios.  
+   cucumber:luma:tags - Add your scenario tag in the end using -> @tag.  
+   cucumber:luma:debug - After attatching the debugger you can easily debug the desired scenario.  

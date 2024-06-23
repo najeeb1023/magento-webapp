@@ -1,11 +1,11 @@
 import { pageFixture } from "../hooks/pageFixture";
-import * as userShoppingPage from "../resources/userShoppingPage.json";
+import * as userShoppingByWearPage from "../resources/userShoppingPageByWear.json";
 import * as registrationPage from "../resources/registrationPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 
     function getResource(resourceName: string){
-        return userShoppingPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
+        return userShoppingByWearPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     }
 
     function getResourceRegisterPage(resourceName: string){
@@ -13,34 +13,34 @@ import { Page, expect } from "@playwright/test";
     }
 
     export class CategoryAndProductSelectionFacade{
-        private userShopping: UserShopping;
+        private userShoppingByWear: UserShoppingByWear;
 
-        constructor(userShopping: UserShopping){
-         this.userShopping = userShopping;
+        constructor(userShoppingByWear: UserShoppingByWear){
+         this.userShoppingByWear = userShoppingByWear;
     };
         
         public async productSelection(section: string, attire: string){
-            await this.userShopping.goSectionAndAttire(section, attire);
+            await this.userShoppingByWear.goSectionAndAttire(section, attire);
         };
 
         public async selectRandomItem(){
-            await this.userShopping.showItems();
-            await this.userShopping.selectRandomProduct();
+            await this.userShoppingByWear.showItems();
+            await this.userShoppingByWear.selectRandomProduct();
         };
 
         public async showProductDetails(){
-            await this.userShopping.getProductPriceAndSizes();
-            await this.userShopping.selectAndGetProductColors();
-            await this.userShopping.addToCartProduct();
+            await this.userShoppingByWear.getProductPriceAndSizes();
+            await this.userShoppingByWear.selectAndGetProductColors();
+            await this.userShoppingByWear.addToCartProduct();
         };
 };
 
-    export class UserShopping {
+    export class UserShoppingByWear {
     constructor(public page: Page){
         pageFixture.page = page;
     };
 
-    userShoppingLocators = {
+    userShoppingByWearByWearLocators = {
         shoppingSectionHeader:() => pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue),
         attireSectionBtn:() => pageFixture.page.locator(getResource('attireSectionBtn').selectorValue),
         itemsShown:() => pageFixture.page.locator(getResource('itemsShown').selectorValue),
@@ -69,7 +69,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async showItems():Promise<void>{
-        const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
+        const getNumberOfProducts = await this.userShoppingByWearByWearLocators.productShown().count();
         console.log('    Products shown -> ' + getNumberOfProducts + '\n');
         for(let i=1;i<=getNumberOfProducts;i++){
             const getEl = await pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', i.toString())).allTextContents();
@@ -80,7 +80,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async selectRandomProduct():Promise<void>{
-        const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
+        const getNumberOfProducts = await this.userShoppingByWearByWearLocators.productShown().count();
         let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
 
         if (ind == 0) {
@@ -89,8 +89,8 @@ import { Page, expect } from "@playwright/test";
         const el = (pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)));
         await expect(el).toBeVisible();
         await el.dblclick({force: true, timeout: 3000});
-        const list = await this.userShoppingLocators.shoppingList().isVisible();
-        const listCount = await this.userShoppingLocators.shoppingList().count();
+        const list = await this.userShoppingByWearByWearLocators.shoppingList().isVisible();
+        const listCount = await this.userShoppingByWearByWearLocators.shoppingList().count();
         if (list == true){
             pageFixture.logger.warn('User not navigated, retrying click');
             await pageFixture.page.waitForLoadState('networkidle');
@@ -104,14 +104,14 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async getProductPriceAndSizes():Promise<void>{
-        const priceText = (await this.userShoppingLocators.productPrice().textContent()).trim();
-        if(await this.userShoppingLocators.productPrice().isVisible() == true){
+        const priceText = (await this.userShoppingByWearByWearLocators.productPrice().textContent()).trim();
+        if(await this.userShoppingByWearByWearLocators.productPrice().isVisible() == true){
         pageFixture.logger.warn('Product price is not visible, attempting to click product again.')
         const regEx = /\$\d+\.\d{2}/;
         const matchPriceText = priceText.match(regEx);
         console.log("The price of the product -> "+matchPriceText[0]);
-        const sizeText = (await this.userShoppingLocators.productSize().textContent()).trim();
-        const getSizes = await this.userShoppingLocators.getProductSizesAvailable().count();
+        const sizeText = (await this.userShoppingByWearByWearLocators.productSize().textContent()).trim();
+        const getSizes = await this.userShoppingByWearByWearLocators.getProductSizesAvailable().count();
         console.log('\x1b[36m%s\x1b[0m',sizeText+'s' + ' available are: ');
         for(let i=1;i<=getSizes;i++){
             const el = await pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', i.toString())).allTextContents();
@@ -122,15 +122,15 @@ import { Page, expect } from "@playwright/test";
         } else {
         return this.selectRandomProduct();
         };
-        const getSizes = await this.userShoppingLocators.getProductSizesAvailable().count();
+        const getSizes = await this.userShoppingByWearByWearLocators.getProductSizesAvailable().count();
         let ind: number = Math.floor(Math.random() * (getSizes - 1))+ 1;
         const sizeEl = (pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', `${ind}`)));
         await sizeEl.click();
-        console.log("Size selected: "+await this.userShoppingLocators.getSelectedProductSize().textContent());
+        console.log("Size selected: "+await this.userShoppingByWearByWearLocators.getSelectedProductSize().textContent());
     };
 
     public async selectAndGetProductColors():Promise<void>{
-        const getColorSwatch = await this.userShoppingLocators.getColorSwatches().count();
+        const getColorSwatch = await this.userShoppingByWearByWearLocators.getColorSwatches().count();
         console.log('Color found: ' + getColorSwatch);
         let ind: number = Math.floor(Math.random() * (getColorSwatch - 1)) + 1;
         if (ind == 0) {
@@ -138,15 +138,15 @@ import { Page, expect } from "@playwright/test";
         } else {
         const colorToBeSelect = await pageFixture.page.locator(getResource('colorSwatch').selectorValue.replace('FLAG', `${ind}`));
         await colorToBeSelect.click();
-        await this.userShoppingLocators.getCurrentSelectedColor().isVisible();
-        const getColor = await this.userShoppingLocators.getCurrentSelectedColor().textContent();
+        await this.userShoppingByWearByWearLocators.getCurrentSelectedColor().isVisible();
+        const getColor = await this.userShoppingByWearByWearLocators.getCurrentSelectedColor().textContent();
         console.log('Selected color: ' +getColor);
         };
     };
 
     public async addToCartProduct():Promise<void>{
-        await this.userShoppingLocators.addToCartBtn().click();
-        await  expect(this.userShoppingLocators.pageMessage()).toBeVisible();
+        await this.userShoppingByWearByWearLocators.addToCartBtn().click();
+        await  expect(this.userShoppingByWearByWearLocators.pageMessage()).toBeVisible();
     };
 
     
