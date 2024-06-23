@@ -1,10 +1,15 @@
 import { pageFixture } from "../hooks/pageFixture";
 import * as userLoginPage from "../../../src/test/resources/userLoginPage.json";
+import * as registrationpage from "../../../src/test/resources/registrationPage.json";
 import { PageElement } from "../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
 
     function getResource(resourceName: string) {
         return userLoginPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
+    };
+
+    function getResourceRegisterPage(resourceName: string) {
+        return registrationpage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     };
 
 export class LoginUser {
@@ -18,7 +23,8 @@ export class LoginUser {
         emailAddress:() => pageFixture.page.locator(getResource('emailAddress').selectorValue),
         password:() => pageFixture.page.locator(getResource('password').selectorValue),
         signInUserBtn:() => pageFixture.page.locator(getResource('signInBtn').selectorValue),
-        welcomeMessage:() => pageFixture.page.locator(getResource('welcomeMessage').selectorValue).first()
+        welcomeMessage:() => pageFixture.page.locator(getResource('welcomeMessage').selectorValue).first(),
+        pageMessage:() => pageFixture.page.locator(getResourceRegisterPage('pageMessage').selectorValue)
     };
 
     public async goToSignIn():Promise<void>{
@@ -37,7 +43,12 @@ export class LoginUser {
         } else {
             pageFixture.logger.error('User is not logged in.')
         }
-        
-        
+    };
+
+    public async assertUserIsNotLoggedIn():Promise<void>{ 
+        const pageMessage = (await (this.userLoginLocators.pageMessage().textContent())).trim();
+        console.log(pageMessage);
+        expect(this.userLoginLocators.pageMessage()).toContainText('The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+        pageFixture.logger.info('User is logged in.');
     };
 };

@@ -5,7 +5,7 @@
   "scripts": {
     "cucumber:luma": "cucumber-js --config=config/cucumber.js",
     "cucumber:luma:tags": "cucumber-js --config=config/cucumber.js --tags ",
-    "cucumber:luma:debug": "cucumber-js --config=config/cucumber.js --tags @MenShopping"
+    "cucumber:luma:debug": "cucumber-js --config=config/cucumber.js --tags @debug"
   },
   "keywords": [],
   "author": "",
