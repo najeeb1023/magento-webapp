@@ -42,6 +42,7 @@ import { Page, expect } from "@playwright/test";
         getProductSizesAvailable:() => pageFixture.page.locator(getResource('getProductSizesAvailable').selectorValue),
         getCurrentSelectedColor:() => pageFixture.page.locator(getResource('getCurrentSelectedColor').selectorValue),
         getColorSwatches:() => pageFixture.page.locator(getResource('getColorSwatches').selectorValue),
+        getSelectedProductSize:() => pageFixture.page.locator(getResource('getSelectedProductSize').selectorValue)
 
     };
 
@@ -68,7 +69,7 @@ import { Page, expect } from "@playwright/test";
     public async selectRandomProduct():Promise<void>{
         const getNumberOfProducts = await this.userShoppingLocators.productShown().count();
         let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
-        
+
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
@@ -105,9 +106,14 @@ import { Page, expect } from "@playwright/test";
                 console.log(''+i +")" + " " + text.trim());
              };
         }
-    } else {
+        } else {
         return this.selectRandomProduct();
-    }
+        };
+        const getSizes = await this.userShoppingLocators.getProductSizesAvailable().count();
+        let ind: number = Math.floor(Math.random() * (getSizes - 1))+ 1;
+        const sizeEl = (pageFixture.page.locator(getResource('getProductSize').selectorValue.replace('FLAG', `${ind}`)));
+        await sizeEl.click();
+        console.log("Size selected: "+await this.userShoppingLocators.getSelectedProductSize().textContent());
     };
 
     public async selectAndGetProductColors():Promise<void>{
@@ -124,4 +130,6 @@ import { Page, expect } from "@playwright/test";
         console.log(getColor);
         };
     };
+
+    
 };

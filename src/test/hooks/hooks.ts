@@ -9,7 +9,7 @@ let context: BrowserContext;
 
 BeforeAll(async function () {
     pageFixture.logger = createCustomLogger();
-    pageFixture.logger.info('----------------- New Test Run -----------------');
+    pageFixture.logger.info('----------------- New Test Run -----------------' + "\n");
     browser = await chromium.launch(config);
 });
 
