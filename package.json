@@ -1,6 +1,6 @@
 {
   "name": "magento-webapp",
-  "version": "1.0.0",
+  "version": "v3.3.0",
   "main": "index.js",
   "scripts": {
     "cucumber:luma": "cucumber-js --config=config/cucumber.js",

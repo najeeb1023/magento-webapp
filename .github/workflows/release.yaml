@@ -1,4 +1,4 @@
-name: Release version.
+name: v3.3.0.
 on:
    push
 
