@@ -15,10 +15,9 @@ import { pageFixture } from "../hooks/pageFixture";
     };
 
 
-    public async searchProduct():Promise<any>{
-            const product: string = await this.saveSelectedProduct();
-            console.log('Selected product:', product);
-            await this.shopBySearchLocators.searchBar().fill(product); // Fill searchBarInput with the actual product name
-            await pageFixture.page.keyboard.press('Enter');
-            };
+    public async searchProduct():Promise<any>{    
+        console.log('Selected product:', UserShoppingByWear.globalArray[0]);
+        await this.shopBySearchLocators.searchBar().fill(UserShoppingByWear.globalArray[0]);
+        await pageFixture.page.keyboard.press('Enter');
+        };
     };
