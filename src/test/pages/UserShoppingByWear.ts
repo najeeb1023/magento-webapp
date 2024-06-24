@@ -40,7 +40,7 @@ import { Page, expect } from "@playwright/test";
         pageFixture.page = page;
     };
 
-    // public static savedProductName:string;
+    public static globalArray: string[] = [];
 
     userShoppingByWearByWearLocators = {
         shoppingSectionHeader:() => pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue),
@@ -104,11 +104,9 @@ import { Page, expect } from "@playwright/test";
             await pageFixture.logger.info('User navigated successfully.')
             };
         };
-    };
-
-    public async saveSelectedProduct():Promise<any>{
-        const productName = (await (this.userShoppingByWearByWearLocators.pageTitle().textContent())).trim();
-        return productName;
+        const productName = await this.userShoppingByWearByWearLocators.pageTitle().innerText();
+        UserShoppingByWear.globalArray.push(productName)
+        return console.log('inside the selectRandomProductFunction', UserShoppingByWear.globalArray)
     };
 
     public async getProductPriceAndSizes():Promise<void>{
