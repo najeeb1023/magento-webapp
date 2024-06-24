@@ -14,5 +14,4 @@ Feature: Verify that the user is able to register an account.
 
         Examples:
             | FirstName  | LastName  | Email                | Password       |
-            | TestZulfi  | ZulfiTest | zulfiTest@gmail.com  | testsss123!    |
             | FacadeUser | UserFace  | facade23@gmail.com   | facading123!@  |

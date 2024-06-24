@@ -95,18 +95,19 @@ import { Page, expect } from "@playwright/test";
         const list = await this.userShoppingByWearByWearLocators.shoppingList().isVisible();
         const listCount = await this.userShoppingByWearByWearLocators.shoppingList().count();
         if (list == true){
-            pageFixture.logger.warn('User not navigated, retrying click');
+            await pageFixture.logger.warn('User not navigated, retrying click');
             await pageFixture.page.waitForLoadState('networkidle');
             for(let i=0;i<listCount;i++){
             await el.dblclick({force: true, timeout: 3000});
                 }
             } else {
-            pageFixture.logger.info('User navigated successfully.')
-            //const productName = [(await (this.userShoppingByWearByWearLocators.pageTitle().textContent())).trim()];
-            // console.log(productName);
+            await pageFixture.logger.info('User navigated successfully.')
             };
         };
-        const productName = (await (this.userShoppingByWearByWearLocators.productTitle().textContent())).trim();
+    };
+
+    public async saveSelectedProduct():Promise<any>{
+        const productName = (await (this.userShoppingByWearByWearLocators.pageTitle().textContent())).trim();
         return productName;
     };
 

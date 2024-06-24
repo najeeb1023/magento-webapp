@@ -15,19 +15,10 @@ import { pageFixture } from "../hooks/pageFixture";
     };
 
 
-    public async searchProduct():Promise<void>{
-        // try {
-            const product = await this.selectRandomProduct(); // Ensure to await selectRandomProduct
-            //console.log('Selected product:', await product); // Debugging line
-            // if (product) {
-                const searchProduct = await product.toString();
-                await this.shopBySearchLocators.searchBar().fill(await searchProduct); // Fill searchBarInput with the actual product name
-                await pageFixture.page.keyboard.press('Enter');
-            // } else {
-                // console.error('No product was selected');
+    public async searchProduct():Promise<any>{
+            const product: string = await this.saveSelectedProduct();
+            console.log('Selected product:', product);
+            await this.shopBySearchLocators.searchBar().fill(product); // Fill searchBarInput with the actual product name
+            await pageFixture.page.keyboard.press('Enter');
             };
-        // } catch (error) {
-        //     console.error('An error occurred:', error);
-        // }
     };
-// };
