@@ -40,6 +40,8 @@ import { Page, expect } from "@playwright/test";
         pageFixture.page = page;
     };
 
+    // public static savedProductName:string;
+
     userShoppingByWearByWearLocators = {
         shoppingSectionHeader:() => pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue),
         attireSectionBtn:() => pageFixture.page.locator(getResource('attireSectionBtn').selectorValue),
@@ -55,7 +57,9 @@ import { Page, expect } from "@playwright/test";
         getColorSwatches:() => pageFixture.page.locator(getResource('getColorSwatches').selectorValue),
         getSelectedProductSize:() => pageFixture.page.locator(getResource('getSelectedProductSize').selectorValue),
         pageMessage:() => pageFixture.page.locator(getResourceRegisterPage('pageMessage').selectorValue),
-        addToCartBtn:() => pageFixture.page.locator(getResource('addToCartBtn').selectorValue)
+        addToCartBtn:() => pageFixture.page.locator(getResource('addToCartBtn').selectorValue),
+        pageTitle:() => pageFixture.page.locator(getResourceRegisterPage('createAccHeading').selectorValue),
+        productTitle:() => pageFixture.page.locator(getResourceRegisterPage('productTitle').selectorValue)
 
     };
 
@@ -79,10 +83,9 @@ import { Page, expect } from "@playwright/test";
         };
     };
 
-    public async selectRandomProduct():Promise<void>{
+    public async selectRandomProduct():Promise<any>{
         const getNumberOfProducts = await this.userShoppingByWearByWearLocators.productShown().count();
         let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
-
         if (ind == 0) {
             Math.floor(Math.random() * getNumberOfProducts);
         } else {
@@ -99,8 +102,12 @@ import { Page, expect } from "@playwright/test";
                 }
             } else {
             pageFixture.logger.info('User navigated successfully.')
+            //const productName = [(await (this.userShoppingByWearByWearLocators.pageTitle().textContent())).trim()];
+            // console.log(productName);
             };
         };
+        const productName = (await (this.userShoppingByWearByWearLocators.productTitle().textContent())).trim();
+        return productName;
     };
 
     public async getProductPriceAndSizes():Promise<void>{

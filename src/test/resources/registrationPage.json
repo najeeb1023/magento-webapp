@@ -36,6 +36,10 @@
         {
             "elementName": "pageMessage",
             "selectorValue": "//div[contains(@class,'page messages')]"
+        },
+        {
+            "elementName": "productTitle",
+            "selectorValue": "//h1[contains(@class,'page-title')]"
         }
     ]
 }

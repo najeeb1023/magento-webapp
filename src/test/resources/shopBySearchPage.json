@@ -1,0 +1,13 @@
+{
+    "name": "Search Locator",
+    "webElements": [
+        {
+            "elementName": "lumaLogo",
+            "selectorValue": "//div[contains(@class,'header content')]//a[contains(@class,'logo')]"
+        },
+        {
+            "elementName": "searchBar",
+            "selectorValue": "//div[contains(@class,'field search')]//input"
+        }
+    ]
+}
