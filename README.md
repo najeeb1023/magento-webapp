@@ -36,12 +36,12 @@ The framework is designed with Page Object Model (POM) and Facade design pattern
 ### Installation
 
 1. Clone the repository:  
-   git clone https://github.com/najeeb1023/magento-webapp.git
+- git clone https://github.com/najeeb1023/magento-webapp.git
 
 2. Install dependencies:  
-   npm i
+- npm i
 
 3. To run the project:  
-   * cucumber:luma - To run all the test scenarios.  
-   * cucumber:luma:tags - Add your scenario tag in the end using -> @tag.  
-   * cucumber:luma:debug - After attatching the debugger you can easily debug the desired scenario.  
+* cucumber:luma - To run all the test scenarios.  
+* cucumber:luma:tags - Add your scenario tag in the end using -> @tag.  
+* cucumber:luma:debug - After attatching the debugger you can easily debug the desired scenario.  
