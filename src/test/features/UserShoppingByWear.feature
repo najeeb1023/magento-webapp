@@ -14,8 +14,8 @@ Feature: Verify that the user is able to purchase some item.
         And The details of the product are shown.
 
         Examples:
-            | Section  | Attire   |
-            | Men      | Shorts     |
+            | Section  | Attire      |
+            | Men      | Jackets     |
 
     @WomenShopping
     Scenario: User shops for Women Jackets.
