@@ -84,29 +84,32 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async selectRandomProduct():Promise<any>{
-        const getNumberOfProducts = await this.userShoppingByWearByWearLocators.productShown().count();
-        let ind: number = Math.floor(Math.random() * (getNumberOfProducts - 1))+ 1;
-        if (ind == 0) {
-            Math.floor(Math.random() * getNumberOfProducts);
-        } else {
-        const el = (pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`)));
-        await expect(el).toBeVisible();
-        await el.dblclick({force: true, timeout: 3000});
-        const list = await this.userShoppingByWearByWearLocators.shoppingList().isVisible();
-        const listCount = await this.userShoppingByWearByWearLocators.shoppingList().count();
-        if (list == true){
-            await pageFixture.logger.warn('User not navigated, retrying click');
-            await pageFixture.page.waitForLoadState('networkidle');
-            for(let i=0;i<listCount;i++){
-            await el.dblclick({force: true, timeout: 3000});
+        try {
+            const getNumberOfProducts = await this.userShoppingByWearByWearLocators.productShown().count();
+            let ind: number = Math.floor(Math.random() * getNumberOfProducts);
+            ind = Math.max(ind, 1);
+            const el = pageFixture.page.locator(getResource('itemsShown').selectorValue.replace('FLAG', `${ind}`));
+            await expect(el).toBeVisible();
+            await el.dblclick({ force: true, timeout: 3000 });
+            const listVisible = await this.userShoppingByWearByWearLocators.shoppingList().isVisible();
+            if (listVisible) {
+                await pageFixture.logger.warn('User not navigated, retrying click');
+                await pageFixture.page.waitForLoadState('networkidle');
+                const listCount = await this.userShoppingByWearByWearLocators.shoppingList().count();
+                for (let i = 0; i < listCount; i++) {
+                    await el.dblclick({ force: true, timeout: 3000 });
                 }
             } else {
-            await pageFixture.logger.info('User navigated successfully.')
-            };
-        };
-        const productName = await this.userShoppingByWearByWearLocators.pageTitle().innerText();
-        UserShoppingByWear.globalArray.push(productName)
-        return console.log('inside the selectRandomProductFunction', UserShoppingByWear.globalArray)
+                await pageFixture.logger.info('User navigated successfully.');
+            }
+            const productName = await this.userShoppingByWearByWearLocators.pageTitle().innerText();
+            UserShoppingByWear.globalArray.push(productName);
+            console.log('Selected random product: ', UserShoppingByWear.globalArray);
+            return productName;
+        } catch (error) {
+            await pageFixture.logger.error('Random product selection failed', error);
+            throw error;
+        }
     };
 
     public async getProductPriceAndSizes():Promise<void>{
