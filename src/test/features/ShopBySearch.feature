@@ -1,4 +1,4 @@
-@ShopBySearch
+@ShopBySearch @Regression
 
 Feature: Verify that the user is able to purchase an item by searching.
 
