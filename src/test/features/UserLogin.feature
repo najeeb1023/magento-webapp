@@ -1,4 +1,4 @@
-@LoginUser
+@LoginUser @Regression
 
 Feature: Verify that the user is able to login into an already registered account.
 

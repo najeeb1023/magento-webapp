@@ -1,4 +1,4 @@
-@RegisterUser
+@RegisterUser @Regression
 
 Feature: Verify that the user is able to register an account.
 

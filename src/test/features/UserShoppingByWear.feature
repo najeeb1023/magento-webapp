@@ -1,4 +1,4 @@
-@UserShopping
+@UserShopping @Regression
 
 Feature: Verify that the user is able to purchase some item.
 
@@ -8,21 +8,21 @@ Feature: Verify that the user is able to purchase some item.
         Given The user lands at the webpage.
 
     @MenShopping
-    Scenario: User shops for Men Jackets.
+    Scenario: User shops for Men attire.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
-        And The details of the product are shown.
+        Then The details of the product are shown.
 
         Examples:
             | Section  | Attire      |
             | Men      | Jackets     |
 
     @WomenShopping
-    Scenario: User shops for Women Jackets.
+    Scenario: User shops for Women attire.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
-        And The details of the product are shown.
+        Then The details of the product are shown.
 
         Examples:
-            | Section    | Attire             |
-            | Women      | Bras & Tanks       |
+            | Section    | Attire        |
+            | Women      | Bras & Tanks  |
