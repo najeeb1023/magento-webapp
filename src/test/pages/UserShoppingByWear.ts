@@ -31,8 +31,12 @@ import { Page, expect } from "@playwright/test";
         public async showProductDetails(){
             await this.userShoppingByWear.getProductPriceAndSizes();
             await this.userShoppingByWear.selectAndGetProductColors();
-            await this.userShoppingByWear.addToCartProduct();
         };
+
+        public async userItemCheckout(){
+            await this.userShoppingByWear.addToCartProduct();
+            await this.userShoppingByWear.proceedToCheckout();
+        }
 };
 
     export class UserShoppingByWear {
@@ -59,7 +63,9 @@ import { Page, expect } from "@playwright/test";
         pageMessage:() => pageFixture.page.locator(getResourceRegisterPage('pageMessage').selectorValue),
         addToCartBtn:() => pageFixture.page.locator(getResource('addToCartBtn').selectorValue),
         pageTitle:() => pageFixture.page.locator(getResourceRegisterPage('createAccHeading').selectorValue),
-        productTitle:() => pageFixture.page.locator(getResourceRegisterPage('productTitle').selectorValue)
+        productTitle:() => pageFixture.page.locator(getResourceRegisterPage('productTitle').selectorValue),
+        miniCartBtn:() => pageFixture.page.locator(getResource('miniCartBtn').selectorValue),
+        proceedToCheckoutBtn:() => pageFixture.page.locator(getResource('proceedToCheckoutBtn').selectorValue)
 
     };
 
@@ -158,5 +164,8 @@ import { Page, expect } from "@playwright/test";
         await  expect(this.userShoppingByWearByWearLocators.pageMessage()).toBeVisible();
     };
 
-    
+    public async proceedToCheckout():Promise<void>{
+        await this.userShoppingByWearByWearLocators.miniCartBtn().click();
+        await this.userShoppingByWearByWearLocators.proceedToCheckoutBtn().click();
+    };
 };

@@ -61,6 +61,15 @@
         {
             "elementName": "addToCartBtn",
             "selectorValue": "//div[contains(@class,'actions')]//button[contains(@title,'Add to Cart')]"
+        },
+        {
+            "elementName": "miniCartBtn",
+            "selectorValue": "//div[contains(@class,'minicart-wrapper')]"
+        },
+        {
+            "elementName": "proceedToCheckoutBtn",
+            "selectorValue": "//div[contains(@class,'primary')]//button[contains(@id,'top-cart-btn-checkout')]"
         }
+
         ]
 }

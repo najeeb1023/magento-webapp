@@ -10,7 +10,7 @@ Feature: Verify that the user is able to login into an already registered accoun
     @LoginWithCorrectCredentials
     Scenario: User is able to login with correct credentials.
         Given The user clicks on the Sign In button on the header.
-        When The user enters correct "<EmailAddress>" and "<Password>".
+        When The user enters "<EmailAddress>" and "<Password>".
         Then The user is logged in.
 
         Examples:
@@ -20,7 +20,7 @@ Feature: Verify that the user is able to login into an already registered accoun
     @LoginWithIncorrectCredentials
     Scenario: User is not able to login with incorrect credentials.
         Given The user clicks on the Sign In button on the header.
-        When The user enters correct "<EmailAddress>" and "<Password>".
+        When The user enters "<EmailAddress>" and "<Password>".
         Then The user is not logged in.
 
         Examples:

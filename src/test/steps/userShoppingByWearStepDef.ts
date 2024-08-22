@@ -16,4 +16,5 @@ When("The products are shown and user navigates to a product.", async function (
 
 When("The details of the product are shown.", async function (){
     await categoryAndProductSectionFacade.showProductDetails();
+    await categoryAndProductSectionFacade.userItemCheckout();
 });
