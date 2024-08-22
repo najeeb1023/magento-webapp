@@ -194,7 +194,7 @@ import { Page, expect } from "@playwright/test";
         await this.userShoppingByWearByWearLocators.state().scrollIntoViewIfNeeded();
         await this.userShoppingByWearByWearLocators.zipCode().fill(zipcode);
         await this.userShoppingByWearByWearLocators.country().scrollIntoViewIfNeeded();
-        await this.userShoppingByWearByWearLocators.country().selectOption(country)
+        await this.userShoppingByWearByWearLocators.country().selectOption(country);
         await this.userShoppingByWearByWearLocators.phoneNumber().fill(phoneNumber);
         await this.userShoppingByWearByWearLocators.nextBtn().scrollIntoViewIfNeeded();
         await this.userShoppingByWearByWearLocators.nextBtn().click();
