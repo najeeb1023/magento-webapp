@@ -14,7 +14,14 @@ When("The products are shown and user navigates to a product.", async function (
     await categoryAndProductSectionFacade.selectRandomItem();
 });
 
-When("The details of the product are shown.", async function (){
+When("The details of the product are shown and user adds the product in their cart.", async function (){
     await categoryAndProductSectionFacade.showProductDetails();
+});
+
+When("User navigates to checkout page.", async function (){
     await categoryAndProductSectionFacade.userItemCheckout();
+});
+
+Then("User enters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string}", async function (emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string){
+    await categoryAndProductSectionFacade.enterUserCheckoutDetails(emailAddress, firstName, lastName, streetAddress, city, state, zipcode, country, phoneNumber);
 });
