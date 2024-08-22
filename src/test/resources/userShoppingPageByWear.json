@@ -69,7 +69,46 @@
         {
             "elementName": "proceedToCheckoutBtn",
             "selectorValue": "//div[contains(@class,'primary')]//button[contains(@id,'top-cart-btn-checkout')]"
+        },
+        {
+            "elementName": "emailAddress",
+            "selectorValue": "(//input[contains(@id,'customer-email')])[1]"
+        },
+        {
+            "elementName": "firstName",
+            "selectorValue": "//input[contains(@name,'firstname')]"
+        },
+        {
+            "elementName": "lastName",
+            "selectorValue": "//input[contains(@name,'lastname')]"
+        },
+        {
+            "elementName": "streetAddress",
+            "selectorValue": "//input[contains(@name,'street[0]')]"
+        },
+        {
+            "elementName": "city",
+            "selectorValue": "//input[contains(@name,'city')]"
+        },
+        {
+            "elementName": "state",
+            "selectorValue": "//select[contains(@name,'region_id')]"
+        },
+        {
+            "elementName": "zipCode",
+            "selectorValue": "//input[contains(@name,'postcode')]"
+        },
+        {
+            "elementName": "country",
+            "selectorValue": "//select[contains(@name,'country_id')]"
+        },
+        {
+            "elementName": "phoneNumber",
+            "selectorValue": "//input[contains(@name,'telephone')]"
+        },
+        {
+            "elementName": "nextBtn",
+            "selectorValue": "//button[contains(@class,'button action continue primary')]"
         }
-
         ]
 }

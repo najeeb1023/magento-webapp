@@ -36,6 +36,10 @@ import { Page, expect } from "@playwright/test";
         public async userItemCheckout(){
             await this.userShoppingByWear.addToCartProduct();
             await this.userShoppingByWear.proceedToCheckout();
+        };
+
+        public async enterUserCheckoutDetails(emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string){
+            await this.userShoppingByWear.fillCheckoutForm(emailAddress, firstName, lastName, streetAddress, city, state, zipcode, country, phoneNumber);
         }
 };
 
@@ -65,7 +69,17 @@ import { Page, expect } from "@playwright/test";
         pageTitle:() => pageFixture.page.locator(getResourceRegisterPage('createAccHeading').selectorValue),
         productTitle:() => pageFixture.page.locator(getResourceRegisterPage('productTitle').selectorValue),
         miniCartBtn:() => pageFixture.page.locator(getResource('miniCartBtn').selectorValue),
-        proceedToCheckoutBtn:() => pageFixture.page.locator(getResource('proceedToCheckoutBtn').selectorValue)
+        proceedToCheckoutBtn:() => pageFixture.page.locator(getResource('proceedToCheckoutBtn').selectorValue),
+        emailAddress:() => pageFixture.page.locator(getResource('emailAddress').selectorValue),
+        firstName:() => pageFixture.page.locator(getResource('firstName').selectorValue),
+        lastName:() => pageFixture.page.locator(getResource('lastName').selectorValue),
+        streetAddress:() => pageFixture.page.locator(getResource('streetAddress').selectorValue),
+        city:() => pageFixture.page.locator(getResource('city').selectorValue),
+        state:() => pageFixture.page.locator(getResource('state').selectorValue),
+        zipCode:() => pageFixture.page.locator(getResource('zipCode').selectorValue),
+        country:() => pageFixture.page.locator(getResource('country').selectorValue),
+        phoneNumber:() => pageFixture.page.locator(getResource('phoneNumber').selectorValue),
+        nextBtn:() => pageFixture.page.locator(getResource('nextBtn').selectorValue)
 
     };
 
@@ -167,5 +181,22 @@ import { Page, expect } from "@playwright/test";
     public async proceedToCheckout():Promise<void>{
         await this.userShoppingByWearByWearLocators.miniCartBtn().click();
         await this.userShoppingByWearByWearLocators.proceedToCheckoutBtn().click();
+    };
+
+    public async fillCheckoutForm(emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string):Promise<void>{
+        await pageFixture.page.waitForLoadState('networkidle');
+        await this.userShoppingByWearByWearLocators.emailAddress().fill(emailAddress);
+        await this.userShoppingByWearByWearLocators.firstName().fill(firstName);
+        await this.userShoppingByWearByWearLocators.lastName().fill(lastName);
+        await this.userShoppingByWearByWearLocators.streetAddress().fill(streetAddress);
+        await this.userShoppingByWearByWearLocators.city().fill(city);
+        await this.userShoppingByWearByWearLocators.state().selectOption(state);
+        await this.userShoppingByWearByWearLocators.state().scrollIntoViewIfNeeded();
+        await this.userShoppingByWearByWearLocators.zipCode().fill(zipcode);
+        await this.userShoppingByWearByWearLocators.country().scrollIntoViewIfNeeded();
+        await this.userShoppingByWearByWearLocators.country().selectOption(country);
+        await this.userShoppingByWearByWearLocators.phoneNumber().fill(phoneNumber);
+        await this.userShoppingByWearByWearLocators.nextBtn().scrollIntoViewIfNeeded();
+        await this.userShoppingByWearByWearLocators.nextBtn().click();
     };
 };
