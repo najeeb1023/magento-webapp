@@ -1,6 +1,6 @@
 # Magento WebApp Test Automation Framework
 
-[![v3.6.0.](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml/badge.svg)](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml)
+[![v3.7.0.](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml/badge.svg)](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Overview
