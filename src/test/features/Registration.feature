@@ -1,6 +1,6 @@
 @RegisterUser @Regression
 
-Feature: Verify that the user is able to register an account.
+Feature:C4 Verify that the user is able to register an account.
 
     User enters their details to register an account.
 
