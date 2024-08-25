@@ -24,9 +24,9 @@ jobs:
     - name: Upload Test Results
       run: trcli -y `
        -h "" `
-       --project "Magento Web App"
-       --u ${{ secrets.USERNAME }}
-       --p $ {{ secrets.PASSWORD }}
+       --project "Magento Web App" `
+       -u ${{ secrets.USERNAME }} `
+       -p $ {{ secrets.PASSWORD }} `
        parse_junit \
        -f "test-results/reports/junit-results.xml"
        --title "Playwright Cucumber Tests"
