@@ -19,6 +19,17 @@ jobs:
       run: npx playwright install chromium
     - name: Cucumber-Tests
       run: npm run cucumber:luma
+    - name: Install TestRail CLI
+      run: pip install trcli
+    - name: Upload Test Results
+      run: trcli -y `
+       -h "" `
+       --project "Magento Web App"
+       --u ${{ secrets.USERNAME }}
+       --p $ {{ secrets.PASSWORD }}
+       parse_junit \
+       -f "test-results/reports/junit-results.xml"
+       --title "Playwright Cucumber Tests"
     - uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -28,6 +39,6 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-          name: cucumber-report-json
-          path: test-results/reports/cucumber-report.json
+          name: junit-report.xml
+          path: test-results/reports/junit-results.xml
           retention-days: 30
