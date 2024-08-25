@@ -22,8 +22,7 @@ jobs:
     - name: Install TestRail CLI
       run: pip install trcli
     - name: Update TestRail Result
-      run:
-        trcli -y \
+      run: trcli -y \
         -h https://testautomationportfolio.testrail.io \
         --project "magento-webapp" \
         --username capricorn.najeeb@gmail.com \
