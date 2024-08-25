@@ -25,8 +25,8 @@ jobs:
       run: trcli -y
            -h https://testautomationportfolio.testrail.io
            --project "magento-webapp"
-           --username capricorn.najeeb@gmail.com
-           --password TestRun123!
+           -u capricorn.najeeb@gmail.com
+           -p TestRun123!
            parse_junit
            --title "Playwright Automated Test Run"
            -f "./test-results/reports/junit-results.xml"
