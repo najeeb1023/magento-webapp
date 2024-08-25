@@ -22,12 +22,13 @@ jobs:
     - name: Install TestRail CLI
       run: pip install trcli
     - name: Update TestRail Result
-      run: trcli -y \
-           --project "magento-webapp" \
-           --username capricorn.najeeb@gmail.com \
-           --password TestRun123! \
-           parse_junit \
-           --title "Playwright Automated Test Run" \
+      run: trcli -y
+           -h https://testautomationportfolio.testrail.io
+           --project "magento-webapp"
+           --username capricorn.najeeb@gmail.com
+           --password TestRun123!
+           parse_junit
+           --title "Playwright Automated Test Run"
            -f "./test-results/reports/junit-results.xml"
     - uses: actions/upload-artifact@v4
       if: always()
