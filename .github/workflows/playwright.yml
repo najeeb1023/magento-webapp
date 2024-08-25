@@ -26,7 +26,7 @@ jobs:
            -h https://testautomationportfolio.testrail.io
            --project "magento-webapp"
            -u capricorn.najeeb@gmail.com
-           -p TestRun123!
+           -p Testrun123!
            parse_junit
            --title "Playwright Automated Test Run"
            -f "./test-results/reports/junit-results.xml"
