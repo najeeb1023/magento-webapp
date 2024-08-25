@@ -22,6 +22,7 @@ jobs:
     - name: Cucumber-Tests
       run: npm run cucumber:luma
     - name: Update TestRail Result
+      continue-on-error: true
       run: trcli -y
            -h https://testautomationportfolio.testrail.io
            --project "magento-webapp"
