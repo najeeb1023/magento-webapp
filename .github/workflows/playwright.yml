@@ -5,7 +5,7 @@ on:
   pull_request:
     
 jobs:
-  build:
+  CucumberTests-Job:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -17,11 +17,6 @@ jobs:
       run: npm ci
     - name: Install Playwright Chromium
       run: npx playwright install chromium
-
-  cucumberTests-job:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
     - name: Cucumber-Tests
       run: npm run cucumber:luma
     - uses: actions/upload-artifact@v4
