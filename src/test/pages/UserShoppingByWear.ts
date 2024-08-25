@@ -40,7 +40,11 @@ import { Page, expect } from "@playwright/test";
 
         public async enterUserCheckoutDetails(emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string){
             await this.userShoppingByWear.fillCheckoutForm(emailAddress, firstName, lastName, streetAddress, city, state, zipcode, country, phoneNumber);
-        }
+        };
+
+        public async shippingMethodSelection(){
+            await this.userShoppingByWear.selectShippingMethod();
+        };
 };
 
     export class UserShoppingByWear {
@@ -79,7 +83,8 @@ import { Page, expect } from "@playwright/test";
         zipCode:() => pageFixture.page.locator(getResource('zipCode').selectorValue),
         country:() => pageFixture.page.locator(getResource('country').selectorValue),
         phoneNumber:() => pageFixture.page.locator(getResource('phoneNumber').selectorValue),
-        nextBtn:() => pageFixture.page.locator(getResource('nextBtn').selectorValue)
+        nextBtn:() => pageFixture.page.locator(getResource('nextBtn').selectorValue),
+        selectShippingBtn:() => pageFixture.page.locator(getResource('selectShippingBtn').selectorValue)
 
     };
 
@@ -198,5 +203,13 @@ import { Page, expect } from "@playwright/test";
         await this.userShoppingByWearByWearLocators.phoneNumber().fill(phoneNumber);
         await this.userShoppingByWearByWearLocators.nextBtn().scrollIntoViewIfNeeded();
         await this.userShoppingByWearByWearLocators.nextBtn().click();
+    };
+
+    public async selectShippingMethod():Promise<void> {
+        // await this.userShoppingByWearByWearLocators.selectShippingBtn()
+        const getShippingMethods = await this.userShoppingByWearByWearLocators.selectShippingBtn().count();
+        console.log("Shipping methods found -> ", getShippingMethods);
+
+        // await (pageFixture.page.locator(getResource('selectShippingBtn').selectorValue.replace('FLAG', 'tes1')));
     };
 };

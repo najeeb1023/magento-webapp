@@ -22,6 +22,10 @@ When("User navigates to checkout page.", async function (){
     await categoryAndProductSectionFacade.userItemCheckout();
 });
 
-Then("User enters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string}", async function (emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string){
+When("User enters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string}", async function (emailAddress: string, firstName: string, lastName: string, streetAddress: string, city: string, state: string, zipcode: string, country: string, phoneNumber: string){
     await categoryAndProductSectionFacade.enterUserCheckoutDetails(emailAddress, firstName, lastName, streetAddress, city, state, zipcode, country, phoneNumber);
+});
+
+When("User selects a shipping method.", async function () {
+    await categoryAndProductSectionFacade.shippingMethodSelection();
 });

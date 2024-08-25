@@ -14,6 +14,7 @@ Feature: Verify that the user is able to purchase some item.
         And The details of the product are shown and user adds the product in their cart.
         And User navigates to checkout page.
         And User enters "<EmailAddress>", "<FirstName>", "<LastName>", "<Address>", "<City>", "<State>", "<ZipCode>", "<Country>" and "<PhoneNumber>"
+        And User selects a shipping method.
 
         Examples:
             | Section  | Attire      | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country  | PhoneNumber |
@@ -26,6 +27,7 @@ Feature: Verify that the user is able to purchase some item.
         And The details of the product are shown and user adds the product in their cart.
         And User navigates to checkout page.
         And User enters "<EmailAddress>", "<FirstName>", "<LastName>", "<Address>", "<City>", "<State>", "<ZipCode>", "<Country>" and "<PhoneNumber>"
+        And User selects a shipping method.
 
         Examples:
             | Section    | Attire        | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country      | PhoneNumber |

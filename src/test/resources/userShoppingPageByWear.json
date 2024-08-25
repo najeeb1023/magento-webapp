@@ -109,6 +109,10 @@
         {
             "elementName": "nextBtn",
             "selectorValue": "//button[contains(@class,'button action continue primary')]"
+        },
+        {
+            "elementName": "selectShippingBtn",
+            "selectorValue": "//tbody//tr"
         }
         ]
 }
