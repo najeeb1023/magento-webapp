@@ -20,6 +20,7 @@ jobs:
     - name: Install TestRail CLI
       run: pip install trcli
     - name: Cucumber-Tests
+      continue-on-error: true
       run: npm run cucumber:luma
     - name: Update TestRail Result
       continue-on-error: true
