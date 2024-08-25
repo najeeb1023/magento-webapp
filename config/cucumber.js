@@ -40,7 +40,10 @@ module.exports = {
         "ts-node/register"
     ],
     reporter: [
-        'junit'
+        ['list'],
+        ['junit'],
+        ['html', {outputFolder: 'reports', open: 'never'}],
+        ['junit', {outputFolder: './test-results/junit-report.xml', embedAnnotationsAsProperties: true}]
     ],
     format: [
         "html:test-results/reports/cucumber-report.html",
