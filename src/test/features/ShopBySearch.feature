@@ -1,6 +1,6 @@
 @ShopBySearch @Regression
 
-Feature: Verify that the user is able to purchase an item by searching.
+Feature:C5 Verify that the user is able to purchase an item by searching.
 
     User wants to buy something via search. 
 

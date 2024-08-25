@@ -1,6 +1,6 @@
 @UserShopping @Regression
 
-Feature: Verify that the user is able to purchase some item.
+Feature:C2 Verify that the user is able to purchase some item.
 
     User wants to buy something. 
 

@@ -39,10 +39,17 @@ module.exports = {
     requireModule: [
         "ts-node/register"
     ],
+    reporter: [
+        ['list'],
+        ['junit'],
+        ['html', {outputFolder: 'reports', open: 'never'}],
+        ['junit', {outputFolder: './test-results/junit-report.xml', embedAnnotationsAsProperties: true}]
+    ],
     format: [
         "html:test-results/reports/cucumber-report.html",
         "json:test-results/reports/cucumber-report.json",
-        "@cucumber/pretty-formatter"
+        "@cucumber/pretty-formatter",
+        "junit:test-results/reports/junit-results.xml"
     ],
     },
 };

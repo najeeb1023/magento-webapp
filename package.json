@@ -19,6 +19,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.3",
     "@types/node": "^20.14.2",
+    "@xray-app/playwright-junit-reporter": "^0.3.0",
     "semantic-release": "^24.0.0",
     "ts-node": "^10.9.2",
     "winston": "^3.13.0"

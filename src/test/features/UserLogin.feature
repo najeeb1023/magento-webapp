@@ -1,6 +1,6 @@
 @LoginUser @Regression
 
-Feature: Verify that the user is able to login into an already registered account.
+Feature:C1 Verify that the user is able to login into an already registered account.
 
     User enters their details to login.
 
