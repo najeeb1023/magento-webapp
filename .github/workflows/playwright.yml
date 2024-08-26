@@ -38,6 +38,8 @@ jobs:
     needs: CucumberTests-Job
     runs-on: ubuntu-latest
     steps:
+    - name: Install TestRail CLI
+      run: pip install trcli
     - name: Update TestRail Result
       continue-on-error: true
       run: trcli -y
