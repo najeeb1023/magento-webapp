@@ -41,7 +41,7 @@ module.exports = {
         "ts-node/register"
     ],
     reporter: [
-        ['junit', {outputFile: './test-results/reports/junit-report.xml'}, {PLAYWRIGHT_JUNIT_SUITE_ID: true}]
+        ['junit', {outputFile: './test-results/reports/junit-report.xml'}]
     ],
     format: [
         "html:test-results/reports/cucumber-report.html",
