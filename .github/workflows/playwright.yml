@@ -30,7 +30,7 @@ jobs:
            -u capricorn.najeeb@gmail.com
            -p Testrun123!
            parse_junit
-           --title "Playwright Automated Test Run"
+           --title "magento-webapp_regression"
            -f "./test-results/reports/junit-results.xml"
     - uses: actions/upload-artifact@v4
       if: always()
