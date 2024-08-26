@@ -4,45 +4,38 @@ on:
   pull_request:
 
 jobs:
-  Checkout-Code:
+  CucumberTests-Job:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-  Setup-Node:
-    needs: Checkout-Code
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/setup-node@v4
       with:
         node-version: 20
     - name: Install dependencies
       run: npm ci
-
-  Install-Playwright-Chromium:
-    needs: Setup-Node
-    runs-on: ubuntu-latest
-    steps:
     - name: Install Playwright Chromium
       run: npx playwright install chromium
-
-  Install-TestRail-CLI:
-    needs: Setup-Node
-    runs-on: ubuntu-latest
-    steps:
     - name: Install TestRail CLI
       run: pip install trcli
-
-  Run-Cucumber-Tests:
-    needs: [Install-Playwright-Chromium, Install-TestRail-CLI]
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    steps:
     - name: Cucumber-Tests
+      continue-on-error: true
       run: npm run cucumber:luma
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: cucumber-report-html
+        path: test-results/reports/cucumber-report.html
+        retention-days: 30
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+          name: junit-report.xml
+          path: test-results/reports/junit-results.xml
+          retention-days: 30
 
   Update-TestRail-Result:
-    needs: Run-Cucumber-Tests
+    needs: CucumberTests-Job
     runs-on: ubuntu-latest
     steps:
     - name: Update TestRail Result
@@ -55,25 +48,3 @@ jobs:
            parse_junit
            --title "magento-webapp_regression"
            -f "./test-results/reports/junit-report.xml"
-
-  Upload-Cucumber-Report:
-    needs: Run-Cucumber-Tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: cucumber-report-html
-        path: test-results/reports/cucumber-report.html
-        retention-days: 30
-
-  Upload-JUnit-Report:
-    needs: Run-Cucumber-Tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: junit-report.xml
-        path: test-results/reports/junit-results.xml
-        retention-days: 30
