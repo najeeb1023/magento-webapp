@@ -32,4 +32,4 @@ Feature:Verify that the user is able to purchase some item.
 
         Examples:
             | Section    | Attire        | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country      | PhoneNumber |
-            | Women      | Bras & Tanks  | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United Tests | 873487682   |
+            | Women      | Bras & Tanks  | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United States | 873487682   |
