@@ -19,7 +19,6 @@ jobs:
     - name: Install TestRail CLI
       run: pip install trcli
     - name: Cucumber-Tests
-      continue-on-error: true
       run: npm run cucumber:luma
     - uses: actions/upload-artifact@v4
       if: always()
@@ -41,7 +40,6 @@ jobs:
     - name: Install TestRail CLI
       run: pip install trcli
     - name: Update TestRail Result
-      continue-on-error: true
       run: trcli -y
            -h https://testautomationportfolio.testrail.io
            --project "magento-webapp"
