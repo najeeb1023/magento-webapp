@@ -1,4 +1,5 @@
-@ShopBySearch @Regression
+@TestRail
+@RunID_2
 
 Feature:Verify that the user is able to purchase an item by searching.
 

@@ -1,4 +1,5 @@
-@LoginUser @Regression
+@TestRail
+@RunID_3
 
 Feature:Verify that the user is able to login into an already registered account.
 

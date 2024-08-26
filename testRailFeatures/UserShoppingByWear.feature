@@ -1,4 +1,5 @@
-@UserShopping @Regression
+@TestRail
+@RunID_4
 
 Feature:Verify that the user is able to purchase some item.
 

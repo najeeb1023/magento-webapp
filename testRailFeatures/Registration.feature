@@ -1,4 +1,5 @@
-@RegisterUser @Regression
+@TestRail
+@RunID_1
 
 Feature:Verify that the user is able to register an account.
 
