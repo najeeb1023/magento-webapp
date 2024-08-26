@@ -1,5 +1,5 @@
 @TestRail
-@RunID_1
+@AutomationID_C42
 
 Feature:Verify that the user is able to register an account.
 
