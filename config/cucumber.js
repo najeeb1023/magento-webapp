@@ -1,4 +1,5 @@
 const { DEFAULT_THEME } = require("@cucumber/pretty-formatter");
+const { junit } = require("node:test/reporters");
 
 module.exports = {
     
@@ -40,16 +41,13 @@ module.exports = {
         "ts-node/register"
     ],
     reporter: [
-        ['list'],
-        ['junit'],
-        ['html', {outputFolder: 'reports', open: 'never'}],
-        ['junit', {outputFolder: './test-results/junit-report.xml', embedAnnotationsAsProperties: true}]
+        ['junit', {outputFile: './test-results/reports/junit-report.xml'}, {PLAYWRIGHT_JUNIT_SUITE_ID: true}]
     ],
     format: [
         "html:test-results/reports/cucumber-report.html",
         "json:test-results/reports/cucumber-report.json",
         "@cucumber/pretty-formatter",
-        "junit:test-results/reports/junit-results.xml"
+        "junit:test-results/reports/junit-report.xml"
     ],
     },
 };
