@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install TestRail CLI
+      continue-on-error: true
       run: pip install trcli
     - name: Update TestRail Result
       run: trcli -y
