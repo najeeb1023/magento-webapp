@@ -1,7 +1,9 @@
 # Magento WebApp Test Automation Framework
 
-[![v3.9.0.](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml/badge.svg)](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml)
+[![v4.0.0](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml/badge.svg)](https://github.com/najeeb1023/magento-webapp/actions/workflows/release.yaml)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![TestRail](https://img.shields.io/badge/TestRail-Integrated-blue)](https://www.testrail.io)
+
 
 ## Overview
 
@@ -15,6 +17,11 @@ The framework is designed with Page Object Model (POM) and Facade design pattern
 - **POM Design Pattern**: Enhances test maintenance and reusability.
 - **Facade Design Pattern**: Simplifies complex interactions with a unified interface.
 - **CI/CD Integration**: Seamless integration with CI pipelines.
+- **TestRail Integration**: Automated TestRail synchronization with TestRail.io, automatically creating and updating test cases. Test results (pass/fail) are visualized as pie charts, providing clear insight into test coverage and stability.
+
+## CI/CD and TestRail Integration
+
+The project includes integration with CI/CD pipelines, automatically triggering tests on each commit. The results are pushed to TestRail, where a new test run is created. Test outcomes are displayed as pie charts, giving a quick overview of the test suite's health.
 
 ## Project Structure
 
