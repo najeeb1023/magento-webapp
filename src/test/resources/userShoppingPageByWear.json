@@ -111,8 +111,12 @@
             "selectorValue": "//button[contains(@class,'button action continue primary')]"
         },
         {
-            "elementName": "selectShippingBtn",
-            "selectorValue": "//tbody//tr"
+            "elementName": "getShippingMethods",
+            "selectorValue": "//tr//td[2]"
+        },
+        {
+            "elementName": "selectShipping",
+            "selectorValue": "//tr[FLAG]//td[2]"
         }
         ]
 }
