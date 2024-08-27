@@ -215,6 +215,6 @@ import { BasePage } from "../BasePage";
             for (const text of selectShippingMethod) {
             console.log('Shipping methods prices found: ', text.trim());
         };
-    };
-  };
-};
+     };
+   };
+ };
