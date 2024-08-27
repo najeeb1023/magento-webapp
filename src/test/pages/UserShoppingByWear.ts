@@ -213,6 +213,6 @@ import { Page, expect } from "@playwright/test";
             for (const text of selectShippingMethod) {
             console.log('Shipping methods prices found: ', text.trim());
         };
-    };
-  };
-};
+     };
+   };
+ };
