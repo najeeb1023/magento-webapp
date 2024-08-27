@@ -1,5 +1,4 @@
-@TestRail
-@RunID_3
+@LoginUser @Regression
 
 Feature:Verify that the user is able to login into an already registered account.
 
@@ -8,7 +7,7 @@ Feature:Verify that the user is able to login into an already registered account
     Background: User is landed on the webpage.
         Given The user lands at the webpage.
     
-    @LoginWithCorrectCredentials @AutomationID_C44
+    @LoginWithCorrectCredentials
     Scenario: User is able to login with correct credentials.
         Given The user clicks on the Sign In button on the header.
         When The user enters "<EmailAddress>" and "<Password>".
@@ -18,7 +17,7 @@ Feature:Verify that the user is able to login into an already registered account
             | EmailAddress        | Password      |
             | facade23@gmail.com  | facading123!@ |
 
-    @LoginWithIncorrectCredentials @AutomationID_C45
+    @LoginWithIncorrectCredentials
     Scenario: User is not able to login with incorrect credentials.
         Given The user clicks on the Sign In button on the header.
         When The user enters "<EmailAddress>" and "<Password>".

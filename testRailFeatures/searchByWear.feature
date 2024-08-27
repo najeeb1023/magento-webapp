@@ -1,5 +1,4 @@
-@TestRail
-@RunID_4
+@UserShopping @Regression
 
 Feature:Verify that the user is able to purchase some item.
 
@@ -8,7 +7,7 @@ Feature:Verify that the user is able to purchase some item.
     Background: User is landed on the webpage.
         Given The user lands at the webpage.
 
-    @MenShopping @AutomationID_C46
+    @MenShopping
     Scenario: User shops for Men attire.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
@@ -18,10 +17,10 @@ Feature:Verify that the user is able to purchase some item.
         And User selects a shipping method.
 
         Examples:
-            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country  | PhoneNumber |
+            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country        | PhoneNumber |
             | Men      | Jackets     | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United States  | 873487682   |
 
-    @WomenShopping @AutomationID_C47
+    @WomenShopping
     Scenario: User shops for Women attire.
         When The user clicks on the "<Section>" section and the user clicks on "<Attire>" option.
         And The products are shown and user navigates to a product.
@@ -31,5 +30,5 @@ Feature:Verify that the user is able to purchase some item.
         And User selects a shipping method.
 
         Examples:
-            | Section    | Attire        | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country      | PhoneNumber |
+            | Section    | Attire        | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country       | PhoneNumber |
             | Women      | Bras & Tanks  | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United States | 873487682   |
