@@ -1,5 +1,5 @@
 import { When, Then, setDefaultTimeout } from "@cucumber/cucumber";
-import { CategoryAndProductSelectionFacade, UserShoppingByWear } from "../pages/UserShoppingByWear";
+import { CategoryAndProductSelectionFacade, UserShoppingByWear } from "../pages/sections/UserShoppingByWear";
 import { pageFixture } from "../hooks/pageFixture";
 
 setDefaultTimeout(60000);

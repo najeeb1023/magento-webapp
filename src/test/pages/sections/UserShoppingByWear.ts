@@ -1,16 +1,22 @@
-import { pageFixture } from "../hooks/pageFixture";
-import * as userShoppingByWearPage from "../resources/userShoppingPageByWear.json";
-import * as registrationPage from "../resources/registrationPage.json";
-import { PageElement } from "../resources/interfaces/iPageElement";
+import { pageFixture } from "../../hooks/pageFixture";
+import * as userShoppingByWearPage from "../../resources/userShoppingPageByWear.json";
+import * as registrationPage from "../../resources/registrationPage.json";
+import * as basePageLocators from "../../resources/basePageLocators.json"
+import { PageElement } from "../../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
+import { BasePage } from "../BasePage";
+
+    function getResourceBasePag(resourceName: string){
+        return basePageLocators.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
+    };
 
     function getResource(resourceName: string){
         return userShoppingByWearPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
-    }
+    };
 
     function getResourceRegisterPage(resourceName: string){
         return registrationPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
-    }
+    };
 
     export class CategoryAndProductSelectionFacade{
         private userShoppingByWear: UserShoppingByWear;
@@ -47,15 +53,11 @@ import { Page, expect } from "@playwright/test";
         };
 };
 
-    export class UserShoppingByWear {
-    constructor(public page: Page){
-        pageFixture.page = page;
-    };
+    export class UserShoppingByWear extends BasePage {
 
     public static globalArray: string[] = [];
 
     userShoppingByWearByWearLocators = {
-        shoppingSectionHeader:() => pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue),
         attireSectionBtn:() => pageFixture.page.locator(getResource('attireSectionBtn').selectorValue),
         itemsShown:() => pageFixture.page.locator(getResource('itemsShown').selectorValue),
         attireSectionOptions:() => pageFixture.page.locator(getResource('attireSectionOptions').selectorValue),
@@ -89,7 +91,7 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async goSectionAndAttire(section: string, attire: string):Promise<void>{
-        const el = pageFixture.page.locator(getResource('shoppingSectionHeader').selectorValue.replace('FLAG', section));
+        const el = pageFixture.page.locator(getResourceBasePag('shoppingSectionHeader').selectorValue.replace('FLAG', section));
         await el.click();
         for(let i=0;i<=0;i++){
             const el = await pageFixture.page.locator(getResource('attireSectionBtn').selectorValue.replace('FLAG', attire));

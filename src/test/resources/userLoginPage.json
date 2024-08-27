@@ -2,10 +2,6 @@
     "name": "Login User Locators",
     "webElements": [
         {
-            "elementName": "signInPageBtn",
-            "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Sign In')]"
-        },
-        {
             "elementName": "emailAddress",
             "selectorValue": "//input[contains(@id,'email')]"
         },
