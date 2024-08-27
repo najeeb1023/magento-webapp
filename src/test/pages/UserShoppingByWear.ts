@@ -84,7 +84,7 @@ import { Page, expect } from "@playwright/test";
         country:() => pageFixture.page.locator(getResource('country').selectorValue),
         phoneNumber:() => pageFixture.page.locator(getResource('phoneNumber').selectorValue),
         nextBtn:() => pageFixture.page.locator(getResource('nextBtn').selectorValue),
-        selectShippingBtn:() => pageFixture.page.locator(getResource('selectShippingBtn').selectorValue)
+        getShippingMethods:() => pageFixture.page.locator(getResource('getShippingMethods').selectorValue)
 
     };
 
@@ -206,10 +206,13 @@ import { Page, expect } from "@playwright/test";
     };
 
     public async selectShippingMethod():Promise<void> {
-        // await this.userShoppingByWearByWearLocators.selectShippingBtn()
-        const getShippingMethods = await this.userShoppingByWearByWearLocators.selectShippingBtn().count();
-        console.log("Shipping methods found -> ", getShippingMethods);
-
-        // await (pageFixture.page.locator(getResource('selectShippingBtn').selectorValue.replace('FLAG', 'tes1')));
+        const printShippingMethods = await this.userShoppingByWearByWearLocators.getShippingMethods().count();
+        console.log("Shipping methods found -> ", printShippingMethods);
+        for(let i=0; i<=printShippingMethods; i++) { 
+            const selectShippingMethod = await pageFixture.page.locator(getResource('selectShipping').selectorValue.replace('FLAG', i.toString())).allTextContents();
+            for (const text of selectShippingMethod) {
+            console.log('Shipping methods prices found: ', text.trim());
+        };
     };
+  };
 };
