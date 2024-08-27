@@ -1,5 +1,5 @@
 import { When, setDefaultTimeout } from "@cucumber/cucumber";
-import { ShopBySearch } from "../pages/ShopBySearch";
+import { ShopBySearch } from "../pages/search/ShopBySearch";
 import { pageFixture } from "../hooks/pageFixture";
 
 setDefaultTimeout(60000);

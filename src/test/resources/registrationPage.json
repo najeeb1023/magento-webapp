@@ -2,8 +2,8 @@
     "name": "Registration Page Locators",
     "webElements": [
         {
-            "elementName": "createAnAccountBtn",
-            "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Create an Account')]"
+            "elementName": "",
+            "selectorValue": ""
         },
         {
             "elementName": "createAccHeading",

@@ -6,10 +6,6 @@
             "selectorValue": "//div[contains(@class,'header content')]//a[contains(@class,'logo')]"
         },
         {
-            "elementName": "searchBar",
-            "selectorValue": "//div[contains(@class,'field search')]//input"
-        },
-        {
             "elementName": "goToCartBtn",
             "selectorValue": "//div[contains(@class, 'minicart')]//span[contains(.,'My Cart')]"
         }

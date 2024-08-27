@@ -1,5 +1,5 @@
 import { Given, Then, When, setDefaultTimeout } from "@cucumber/cucumber";
-import { LoginUser } from "../pages/UserLogin";
+import { LoginUser } from "../pages/panel-header/UserLogin";
 import { pageFixture } from "../hooks/pageFixture";
 
 setDefaultTimeout(60000);

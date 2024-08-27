@@ -1,11 +1,6 @@
 {
     "name": "Men Section Page Locators",
     "webElements": [
-
-        {
-            "elementName": "shoppingSectionHeader",
-            "selectorValue": "//span[contains(.,'FLAG')]"
-        },
         {
             "elementName": "attireSectionOptions",
             "selectorValue": "//div[contains(@class,'categories-menu')]//li"

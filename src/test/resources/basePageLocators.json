@@ -1,0 +1,21 @@
+{
+    "name": "Base Page Locators",
+    "webElements": [
+        {
+            "elementName": "createAnAccountBtn",
+            "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Create an Account')]"
+        },
+        {
+            "elementName": "signInPageBtn",
+            "selectorValue": "//div[contains(@class,'panel header')]//ul//li[contains(.,'Sign In')]"
+        },
+        {
+            "elementName": "shoppingSectionHeader",
+            "selectorValue": "//span[contains(.,'FLAG')]"
+        },
+        {
+            "elementName": "searchBar",
+            "selectorValue": "//div[contains(@class,'field search')]//input"
+        }
+    ]
+}

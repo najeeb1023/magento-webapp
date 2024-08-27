@@ -1,8 +1,9 @@
-import { pageFixture } from "../hooks/pageFixture";
-import * as userLoginPage from "../../../src/test/resources/userLoginPage.json";
-import * as registrationpage from "../../../src/test/resources/registrationPage.json";
-import { PageElement } from "../resources/interfaces/iPageElement";
+import { pageFixture } from "../../hooks/pageFixture";
+import * as userLoginPage from "../../../../src/test/resources/userLoginPage.json";
+import * as registrationpage from "../../../../src/test/resources/registrationPage.json";
+import { PageElement } from "../../resources/interfaces/iPageElement";
 import { Page, expect } from "@playwright/test";
+import { BasePage } from "../BasePage";
 
     function getResource(resourceName: string) {
         return userLoginPage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
@@ -12,14 +13,9 @@ import { Page, expect } from "@playwright/test";
         return registrationpage.webElements.find((element: PageElement) => element.elementName == resourceName) as PageElement;
     };
 
-export class LoginUser {
-
-    constructor (public page: Page){
-        pageFixture.page = page;
-    };
+export class LoginUser extends BasePage {
 
     userLoginLocators = {
-        singInBtn:() => pageFixture.page.locator(getResource('signInPageBtn').selectorValue),
         emailAddress:() => pageFixture.page.locator(getResource('emailAddress').selectorValue),
         password:() => pageFixture.page.locator(getResource('password').selectorValue),
         signInUserBtn:() => pageFixture.page.locator(getResource('signInBtn').selectorValue),
@@ -28,7 +24,7 @@ export class LoginUser {
     };
 
     public async goToSignIn():Promise<void>{
-        await this.userLoginLocators.singInBtn().click();
+        await this.panelHeaderLocators.singInBtn().click();
     };
 
     public async userEntersCorrectCredentials(emailAddress: string, password: string):Promise<void>{

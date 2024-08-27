@@ -1,12 +1,14 @@
 import { Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
-import { AccountRegister } from '../pages/AccountRegister';
+import { AccountRegister } from '../pages/panel-header/AccountRegister';
 import { pageFixture } from '../hooks/pageFixture';
+import { BasePage } from '../pages/BasePage';
 
 setDefaultTimeout(150000);
 let registerAccount = new AccountRegister(pageFixture.page);
+let basePage = new BasePage(pageFixture.page);
 
 Given(('The user lands at the webpage.'),  async function () {
-    await registerAccount.visitWebPage();
+    await basePage.visitWebPage();
 });
 
 When(('The user clicks on create account.'),  async function () {
