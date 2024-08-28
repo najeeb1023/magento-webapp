@@ -17,8 +17,10 @@ Feature:Verify that the user is able to purchase some item.
         And User selects a shipping method.
 
         Examples:
-            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country  | PhoneNumber |
-            | Men      | Jackets     | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United States  | 873487682   |
+            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address              | City   | State       | ZipCode | Country        | PhoneNumber |
+            | Men      | Jackets     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | New State   | 34533   | Australia      | 873487682   |
+            | Men      | Tees        | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Deutschland | 2342    | United States  | 873487682   |
+            | Men      | Jackets     | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Bavaria     | 4563    | Germany        | 873487682   |
 
     @WomenShopping
     Scenario: User shops for Women attire.
@@ -30,5 +32,7 @@ Feature:Verify that the user is able to purchase some item.
         And User selects a shipping method.
 
         Examples:
-            | Section    | Attire        | EmailAddress          | FirstName | LastName | Address         | City          | State    | ZipCode | Country      | PhoneNumber |
-            | Women      | Bras & Tanks  | randomemail@gmail.com | Ronald    | McDonald | Any Street 9112 | New York City | New York | 92784   | United States | 873487682   |
+            | Section    | Attire                    | EmailAddress          | FirstName | LastName | Address              | City   | State       | ZipCode | Country        | PhoneNumber |
+            | Women      | Hoodies & Sweatshirts     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | New State   | 34533   | Australia      | 873487682   |
+            | Women      | Jackets                   | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Deutschland | 2342    | United States  | 873487682   |
+            | Women      | Bras & Tanks              | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Bavaria     | 4563    | Germany        | 873487682   |
