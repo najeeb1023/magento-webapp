@@ -13,14 +13,14 @@ Feature:Verify that the user is able to purchase some item.
         And The products are shown and user navigates to a product.
         And The details of the product are shown and user adds the product in their cart.
         And User navigates to checkout page.
-        And User enters "<EmailAddress>", "<FirstName>", "<LastName>", "<Address>", "<City>", "<State>", "<ZipCode>", "<Country>" and "<PhoneNumber>"
+        And User enters "<EmailAddress>", "<FirstName>", "<LastName>", "<Address>", "<City>", "<Country>", "<ZipCode>", "<State>" and "<PhoneNumber>"
         And User selects a shipping method.
 
         Examples:
-            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address              | City   | State       | ZipCode | Country        | PhoneNumber |
-            | Men      | Jackets     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | New State   | 34533   | Australia      | 873487682   |
-            | Men      | Tees        | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Deutschland | 2342    | United States  | 873487682   |
-            | Men      | Jackets     | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Bavaria     | 4563    | Germany        | 873487682   |
+            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address              | City   | State     | ZipCode | Country        | PhoneNumber |
+            | Men      | Jackets     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | Arizona   | 34533   | United States  | 873487682   |
+            | Men      | Tees        | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Arizona   | 2342    | United States  | 873487682   |
+            | Men      | Jackets     | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Arizona   | 4563    | United States  | 873487682   |
 
     @WomenShopping
     Scenario: User shops for Women attire.
@@ -33,6 +33,6 @@ Feature:Verify that the user is able to purchase some item.
 
         Examples:
             | Section    | Attire                    | EmailAddress          | FirstName | LastName | Address              | City   | State       | ZipCode | Country        | PhoneNumber |
-            | Women      | Hoodies & Sweatshirts     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | New State   | 34533   | Australia      | 873487682   |
-            | Women      | Jackets                   | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Deutschland | 2342    | United States  | 873487682   |
-            | Women      | Bras & Tanks              | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Bavaria     | 4563    | Germany        | 873487682   |
+            | Women      | Hoodies & Sweatshirts     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | Arizone     | 34533   | United States  | 873487682   |
+            | Women      | Jackets                   | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Arizona     | 2342    | United States  | 873487682   |
+            | Women      | Bras & Tanks              | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Arizona     | 4563    | United States  | 873487682   |
