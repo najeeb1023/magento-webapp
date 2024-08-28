@@ -17,10 +17,10 @@ Feature:Verify that the user is able to purchase some item.
         And User selects a shipping method.
 
         Examples:
-            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address              | City   | State     | ZipCode | Country        | PhoneNumber |
-            | Men      | Jackets     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | Arizona   | 34533   | United States  | 873487682   |
-            | Men      | Tees        | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Arizona   | 2342    | United States  | 873487682   |
-            | Men      | Jackets     | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Arizona   | 4563    | United States  | 873487682   |
+            | Section  | Attire      | EmailAddress          | FirstName | LastName | Address              | City   | State        | ZipCode | Country        | PhoneNumber |
+            | Men      | Jackets     | randomemail@gmail.com | User#1    | Test     | Playwright Street 23 | Dublin | Arizona      | 34533   | United States  | 873487682   |
+            | Men      | Tees        | randomemail@gmail.com | Test      | User     | Cypress Street 10    | Berlin | Arizona      | 2342    | United States  | 873487682   |
+            | Men      | Jackets     | randomemail@gmail.com | Utest     | User     | Selenium Street 21   | Munich | Arizona      | 4563    | United States  | 873487682   |
 
     @WomenShopping
     Scenario: User shops for Women attire.
