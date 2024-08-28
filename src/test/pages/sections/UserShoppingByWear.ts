@@ -205,7 +205,7 @@ import { BasePage } from "../BasePage";
         await this.userShoppingByWearByWearLocators.state().selectOption('Arizona');
         await this.userShoppingByWearByWearLocators.zipCode().fill(zipcode);
         await this.userShoppingByWearByWearLocators.country().scrollIntoViewIfNeeded();
-        await this.userShoppingByWearByWearLocators.country().selectOption('United States');
+        await this.userShoppingByWearByWearLocators.country().selectOption('Argentina');
         await this.userShoppingByWearByWearLocators.nextBtn().scrollIntoViewIfNeeded();
         await this.userShoppingByWearByWearLocators.nextBtn().click();
     };
