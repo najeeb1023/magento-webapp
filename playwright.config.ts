@@ -5,7 +5,7 @@ const logger = createCustomLogger();
 
 export const config: LaunchOptions = {
   timeout: 150000,
-  headless: false,
+  headless: true,
   // args:['--window-position=-1070,-100'], //! customized for left-sided portrait monitor.
   slowMo: 300,
   // logger: {
